@@ -1,0 +1,25 @@
+moveit_setup_assistant_config:
+  urdf:
+    package: moveit_bot_rope_joint_description
+    relative_path: urdf/Rope_joint.urdf
+  srdf:
+    relative_path: config/Rope_joint.srdf
+  package_settings:
+    author_name: jango175
+    author_email: jan.gorski175@gmail.com
+    generated_timestamp: 1745098897
+  control_xacro:
+    command:
+      - position
+    state:
+      - position
+      - velocity
+  modified_urdf:
+    xacros:
+      - control_xacro
+  control_xacro:
+    command:
+      - position
+    state:
+      - position
+      - velocity

@@ -1,0 +1,144 @@
+<?xml version='1.0' encoding='utf-8'?>
+<robot name="Rope_joint">
+    <link name="Joint">
+        <inertial>
+            <origin xyz="7.1639616909588185e-06 -0.00616114041282696 0.010283924884042962" rpy="0.0 -0.0 0.0" />
+            <mass value="0.9819884881906905" />
+            <inertia ixx="0.0005938487526790243" iyy="0.0010440299884710087" izz="0.001569143556583925" ixy="-2.544528780305602e-07" iyz="2.5450084101372593e-05" ixz="1.9763914161810537e-09" />
+        </inertial>
+        <visual name="Joint_visual">
+            <origin xyz="1.0505147862716058e-11 -0.10999999836087153 0.010000000000000009" rpy="3.141592653589793 -1.5707963267948966 0" />
+            <geometry>
+                <mesh filename="package://moveit_bot_rope_joint_description/meshes/Joint.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </visual>
+        <collision name="Joint_collision">
+            <origin xyz="1.0505147862716058e-11 -0.10999999836087153 0.010000000000000009" rpy="3.141592653589793 -1.5707963267948966 0" />
+            <geometry>
+                <mesh filename="package://moveit_bot_rope_joint_description/meshes/Joint.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+    <link name="Joint_M">
+        <inertial>
+            <origin xyz="-0.0002839247464924666 -0.006161159613505424 7.145082342513579e-06" rpy="0.0 0.0 0.0" />
+            <mass value="0.9819872908083896" />
+            <inertia ixx="0.0015691400990050248" iyy="0.0010440284532366188" izz="0.0005938467225559531" ixy="-2.54501738942687e-05" iyz="-2.5368626355909854e-07" ixz="-2.0433730024363433e-09" />
+        </inertial>
+        <visual name="Joint_M_visual">
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+            <geometry>
+                <mesh filename="package://moveit_bot_rope_joint_description/meshes/Joint_M.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </visual>
+        <collision name="Joint_M_collision">
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+            <geometry>
+                <mesh filename="package://moveit_bot_rope_joint_description/meshes/Joint_M.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+    <link name="Rope_tensioner">
+        <inertial>
+            <origin xyz="-8.783161725155253e-05 -9.00348291311487e-05 0.005958148218763366" rpy="0.0 -0.0 0.0" />
+            <mass value="0.019469218394604033" />
+            <inertia ixx="1.2630260627541595e-06" iyy="8.273092067556426e-07" izz="1.999244652888628e-06" ixy="7.119441108363404e-12" iyz="9.147880231374764e-11" ixz="-2.9388098658453035e-09" />
+        </inertial>
+        <visual name="Rope_tensioner_visual">
+            <origin xyz="2.997602166487923e-17 -7.171435035917274e-10 -0.13596549836087213" rpy="-1.5707963267948974 1.7648320476285669e-19 -4.930380657631324e-32" />
+            <geometry>
+                <mesh filename="package://moveit_bot_rope_joint_description/meshes/Rope_tensioner.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </visual>
+        <collision name="Rope_tensioner_collision">
+            <origin xyz="2.997602166487923e-17 -7.171435035917274e-10 -0.13596549836087213" rpy="-1.5707963267948974 1.7648320476285669e-19 -4.930380657631324e-32" />
+            <geometry>
+                <mesh filename="package://moveit_bot_rope_joint_description/meshes/Rope_tensioner.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+    <link name="cONNECTOR">
+        <inertial>
+            <origin xyz="-5.2555502308719224e-12 -0.05506576329366768 0.001979143302621327" rpy="0.0 -0.0 0.0" />
+            <mass value="0.06391965649415227" />
+            <inertia ixx="9.962063520082333e-05" iyy="1.189003953376829e-06" izz="0.00010002310597693483" ixy="9.437422509105186e-15" iyz="2.186774416480428e-09" ixz="9.707113252093717e-20" />
+        </inertial>
+        <visual name="cONNECTOR_visual">
+            <origin xyz="-2.6645352591003756e-17 0.0 -0.010000000000000005" rpy="-4.930380657631324e-32 1.5707963267948966 0" />
+            <geometry>
+                <mesh filename="package://moveit_bot_rope_joint_description/meshes/cONNECTOR.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </visual>
+        <collision name="cONNECTOR_collision">
+            <origin xyz="-2.6645352591003756e-17 0.0 -0.010000000000000005" rpy="-4.930380657631324e-32 1.5707963267948966 0" />
+            <geometry>
+                <mesh filename="package://moveit_bot_rope_joint_description/meshes/cONNECTOR.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+    <link name="Joint-1">
+        <inertial>
+            <origin xyz="-0.029992836038309156 -0.016161140412826888 0.010283924884042915" rpy="0.0 -0.0 0.0" />
+            <mass value="0.9819884881906905" />
+            <inertia ixx="0.0005938487526790555" iyy="0.0010440299884710126" izz="0.0015691435565837169" ixy="-2.5445287799047937e-07" iyz="2.5450084101380586e-05" ixz="1.9763914173894405e-09" />
+        </inertial>
+        <visual name="Joint-1_visual">
+            <origin xyz="-0.02999999998949533 -0.11999999836087165 0.009999999999999946" rpy="-3.141592653589793 -1.5707963267948961 0" />
+            <geometry>
+                <mesh filename="package://moveit_bot_rope_joint_description/meshes/Joint-1.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </visual>
+        <collision name="Joint-1_collision">
+            <origin xyz="-0.02999999998949533 -0.11999999836087165 0.009999999999999946" rpy="-3.141592653589793 -1.5707963267948961 0" />
+            <geometry>
+                <mesh filename="package://moveit_bot_rope_joint_description/meshes/Joint-1.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+    <link name="Joint_M-1">
+        <inertial>
+            <origin xyz="0.03000714508234241 0.01616115961350538 0.009716075253507529" rpy="0.0 -0.0 0.0" />
+            <mass value="0.9819872908083896" />
+            <inertia ixx="0.000593846722555947" iyy="0.0010440284532366136" izz="0.00156914009900503" ixy="2.536862635589029e-07" iyz="2.5450173894266942e-05" ixz="-2.043373002773229e-09" />
+        </inertial>
+        <visual name="Joint_M-1_visual">
+            <origin xyz="0.029999999999999895 0.00999999999999997 0.01" rpy="-3.141592653589793 -1.5707963267948961 0" />
+            <geometry>
+                <mesh filename="package://moveit_bot_rope_joint_description/meshes/Joint_M-1.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </visual>
+        <collision name="Joint_M-1_collision">
+            <origin xyz="0.029999999999999895 0.00999999999999997 0.01" rpy="-3.141592653589793 -1.5707963267948961 0" />
+            <geometry>
+                <mesh filename="package://moveit_bot_rope_joint_description/meshes/Joint_M-1.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="Joint_M_Rigid-32" type="fixed">
+        <origin xyz="0.01 0.01 -0.03" rpy="-3.141592653589793 -1.5707963267948966 0" />
+        <parent link="Joint_M" />
+        <child link="Joint_M-1" />
+    </joint>
+    <joint name="Joint_M_Revolute-33" type="continuous">
+        <origin xyz="-0.01 0.0 0.0" rpy="-0.0 -1.5707963267948966 0" />
+        <parent link="Joint_M" />
+        <child link="cONNECTOR" />
+        <axis xyz="0.0 0.0 1.0" />
+    </joint>
+    <joint name="cONNECTOR_Revolute-34" type="continuous">
+        <origin xyz="0.0 -0.11 0.0" rpy="-3.141592653589793 2.407412430484045e-35 0.0" />
+        <parent link="cONNECTOR" />
+        <child link="Joint" />
+        <axis xyz="2.407412430484045e-35 8.242280892117934e-36 1.0" />
+    </joint>
+    <joint name="Joint_Rigid-35" type="fixed">
+        <origin xyz="0.03 0.01 0.02" rpy="2.688059641248381e-33 2.407412430484045e-35 1.3363823550460978e-51" />
+        <parent link="Joint" />
+        <child link="Joint-1" />
+    </joint>
+    <joint name="Joint_Rigid-36" type="fixed">
+        <origin xyz="-8.586999999999999e-05 0.02496549999999999 0.01" rpy="-1.5707963267948966 -1.5707963267948966 0" />
+        <parent link="Joint" />
+        <child link="Rope_tensioner" />
+    </joint>
+</robot>
