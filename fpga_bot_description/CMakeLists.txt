@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.8)
-project(fpga_bot_fpga_bot_description)
+project(moveit_bot_fpga_bot_description)
 
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)

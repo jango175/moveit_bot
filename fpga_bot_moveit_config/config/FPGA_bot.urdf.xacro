@@ -3,7 +3,7 @@
     <xacro:arg name="initial_positions_file" default="initial_positions.yaml" />
 
     <!-- Import FPGA_bot urdf file -->
-    <xacro:include filename="$(find fpga_bot_fpga_bot_description)/urdf/FPGA_bot.urdf" />
+    <xacro:include filename="$(find moveit_bot_fpga_bot_description)/urdf/FPGA_bot.urdf" />
 
     <!-- Import control_xacro -->
     <xacro:include filename="FPGA_bot.ros2_control.xacro" />

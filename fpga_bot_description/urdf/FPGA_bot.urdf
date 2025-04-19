@@ -9,13 +9,13 @@
         <visual name="AX-12A-02_visual">
             <origin xyz="0.013500000000000033 0.0 0.03699999944865695" rpy="5.7475132325822575e-46 1.5707963267948954 0" />
             <geometry>
-                <mesh filename="package://fpga_bot_fpga_bot_description/meshes/AX-12A-02.stl" scale="0.001 0.001 0.001" />
+                <mesh filename="package://moveit_bot_fpga_bot_description/meshes/AX-12A-02.stl" scale="0.001 0.001 0.001" />
             </geometry>
         </visual>
         <collision name="AX-12A-02_collision">
             <origin xyz="0.013500000000000033 0.0 0.03699999944865695" rpy="5.7475132325822575e-46 1.5707963267948954 0" />
             <geometry>
-                <mesh filename="package://fpga_bot_fpga_bot_description/meshes/AX-12A-02.stl" scale="0.001 0.001 0.001" />
+                <mesh filename="package://moveit_bot_fpga_bot_description/meshes/AX-12A-02.stl" scale="0.001 0.001 0.001" />
             </geometry>
         </collision>
     </link>
@@ -28,13 +28,13 @@
         <visual name="AX-12A-04_visual">
             <origin xyz="5.513430423320642e-10 0.0 0.004500000000000028" rpy="-5.071403158464064e-22 -1.985233470127261e-22 -5.138677268548816e-53" />
             <geometry>
-                <mesh filename="package://fpga_bot_fpga_bot_description/meshes/AX-12A-04.stl" scale="0.001 0.001 0.001" />
+                <mesh filename="package://moveit_bot_fpga_bot_description/meshes/AX-12A-04.stl" scale="0.001 0.001 0.001" />
             </geometry>
         </visual>
         <collision name="AX-12A-04_collision">
             <origin xyz="5.513430423320642e-10 0.0 0.004500000000000028" rpy="-5.071403158464064e-22 -1.985233470127261e-22 -5.138677268548816e-53" />
             <geometry>
-                <mesh filename="package://fpga_bot_fpga_bot_description/meshes/AX-12A-04.stl" scale="0.001 0.001 0.001" />
+                <mesh filename="package://moveit_bot_fpga_bot_description/meshes/AX-12A-04.stl" scale="0.001 0.001 0.001" />
             </geometry>
         </collision>
     </link>
@@ -47,13 +47,13 @@
         <visual name="plate_visual">
             <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
             <geometry>
-                <mesh filename="package://fpga_bot_fpga_bot_description/meshes/plate.stl" scale="0.001 0.001 0.001" />
+                <mesh filename="package://moveit_bot_fpga_bot_description/meshes/plate.stl" scale="0.001 0.001 0.001" />
             </geometry>
         </visual>
         <collision name="plate_collision">
             <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
             <geometry>
-                <mesh filename="package://fpga_bot_fpga_bot_description/meshes/plate.stl" scale="0.001 0.001 0.001" />
+                <mesh filename="package://moveit_bot_fpga_bot_description/meshes/plate.stl" scale="0.001 0.001 0.001" />
             </geometry>
         </collision>
     </link>
@@ -66,13 +66,13 @@
         <visual name="Motor_holder_plate_visual">
             <origin xyz="-0.022499999999999947 0.005999999999999997 0.037000000000000026" rpy="-6.162975822039066e-33 1.1657341758564144e-15 0.0" />
             <geometry>
-                <mesh filename="package://fpga_bot_fpga_bot_description/meshes/Motor_holder_plate.stl" scale="0.001 0.001 0.001" />
+                <mesh filename="package://moveit_bot_fpga_bot_description/meshes/Motor_holder_plate.stl" scale="0.001 0.001 0.001" />
             </geometry>
         </visual>
         <collision name="Motor_holder_plate_collision">
             <origin xyz="-0.022499999999999947 0.005999999999999997 0.037000000000000026" rpy="-6.162975822039066e-33 1.1657341758564144e-15 0.0" />
             <geometry>
-                <mesh filename="package://fpga_bot_fpga_bot_description/meshes/Motor_holder_plate.stl" scale="0.001 0.001 0.001" />
+                <mesh filename="package://moveit_bot_fpga_bot_description/meshes/Motor_holder_plate.stl" scale="0.001 0.001 0.001" />
             </geometry>
         </collision>
     </link>
@@ -85,13 +85,13 @@
         <visual name="2nd_motor_arm90deg_visual">
             <origin xyz="5.513432999038059e-10 -0.1000000000000002 -0.021000000000000078" rpy="1.8151019493291513e-18 -2.9102856759964347e-22 -1.5707963267948943" />
             <geometry>
-                <mesh filename="package://fpga_bot_fpga_bot_description/meshes/2nd_motor_arm90deg.stl" scale="0.001 0.001 0.001" />
+                <mesh filename="package://moveit_bot_fpga_bot_description/meshes/2nd_motor_arm90deg.stl" scale="0.001 0.001 0.001" />
             </geometry>
         </visual>
         <collision name="2nd_motor_arm90deg_collision">
             <origin xyz="5.513432999038059e-10 -0.1000000000000002 -0.021000000000000078" rpy="1.8151019493291513e-18 -2.9102856759964347e-22 -1.5707963267948943" />
             <geometry>
-                <mesh filename="package://fpga_bot_fpga_bot_description/meshes/2nd_motor_arm90deg.stl" scale="0.001 0.001 0.001" />
+                <mesh filename="package://moveit_bot_fpga_bot_description/meshes/2nd_motor_arm90deg.stl" scale="0.001 0.001 0.001" />
             </geometry>
         </collision>
     </link>
@@ -104,13 +104,13 @@
         <visual name="AX-12A-041_visual">
             <origin xyz="1.1026857116291921e-09 -1.9539925233402755e-16 0.0044999984887302705" rpy="-1.487644743403084e-16 -1.9852334701272612e-22 2.7755575615629027e-16" />
             <geometry>
-                <mesh filename="package://fpga_bot_fpga_bot_description/meshes/AX-12A-041.stl" scale="0.001 0.001 0.001" />
+                <mesh filename="package://moveit_bot_fpga_bot_description/meshes/AX-12A-041.stl" scale="0.001 0.001 0.001" />
             </geometry>
         </visual>
         <collision name="AX-12A-041_collision">
             <origin xyz="1.1026857116291921e-09 -1.9539925233402755e-16 0.0044999984887302705" rpy="-1.487644743403084e-16 -1.9852334701272612e-22 2.7755575615629027e-16" />
             <geometry>
-                <mesh filename="package://fpga_bot_fpga_bot_description/meshes/AX-12A-041.stl" scale="0.001 0.001 0.001" />
+                <mesh filename="package://moveit_bot_fpga_bot_description/meshes/AX-12A-041.stl" scale="0.001 0.001 0.001" />
             </geometry>
         </collision>
     </link>
@@ -123,13 +123,13 @@
         <visual name="AX-12A-021_visual">
             <origin xyz="-0.036999998897314305 0.013499998488730328 1.4210854715202004e-16" rpy="-1.5707963267948968 2.775557561562899e-16 1.8151019493286186e-18" />
             <geometry>
-                <mesh filename="package://fpga_bot_fpga_bot_description/meshes/AX-12A-021.stl" scale="0.001 0.001 0.001" />
+                <mesh filename="package://moveit_bot_fpga_bot_description/meshes/AX-12A-021.stl" scale="0.001 0.001 0.001" />
             </geometry>
         </visual>
         <collision name="AX-12A-021_collision">
             <origin xyz="-0.036999998897314305 0.013499998488730328 1.4210854715202004e-16" rpy="-1.5707963267948968 2.775557561562899e-16 1.8151019493286186e-18" />
             <geometry>
-                <mesh filename="package://fpga_bot_fpga_bot_description/meshes/AX-12A-021.stl" scale="0.001 0.001 0.001" />
+                <mesh filename="package://moveit_bot_fpga_bot_description/meshes/AX-12A-021.stl" scale="0.001 0.001 0.001" />
             </geometry>
         </collision>
     </link>
@@ -142,13 +142,13 @@
         <visual name="new_2nd_arm_bothsamedirection-v1_visual">
             <origin xyz="0.15138807387108918 -8.881784197001253e-17 -0.04830856887228711" rpy="-1.4876396719999184e-16 4.129022648788754e-32 2.775557561562902e-16" />
             <geometry>
-                <mesh filename="package://fpga_bot_fpga_bot_description/meshes/new_2nd_arm_bothsamedirection-v1.stl" scale="0.001 0.001 0.001" />
+                <mesh filename="package://moveit_bot_fpga_bot_description/meshes/new_2nd_arm_bothsamedirection-v1.stl" scale="0.001 0.001 0.001" />
             </geometry>
         </visual>
         <collision name="new_2nd_arm_bothsamedirection-v1_collision">
             <origin xyz="0.15138807387108918 -8.881784197001253e-17 -0.04830856887228711" rpy="-1.4876396719999184e-16 4.129022648788754e-32 2.775557561562902e-16" />
             <geometry>
-                <mesh filename="package://fpga_bot_fpga_bot_description/meshes/new_2nd_arm_bothsamedirection-v1.stl" scale="0.001 0.001 0.001" />
+                <mesh filename="package://moveit_bot_fpga_bot_description/meshes/new_2nd_arm_bothsamedirection-v1.stl" scale="0.001 0.001 0.001" />
             </geometry>
         </collision>
     </link>
@@ -161,13 +161,13 @@
         <visual name="AX-12A-022_visual">
             <origin xyz="0.01349999523797377 -2.474009810349287e-09 0.03699999604697733" rpy="-0.0 1.5707963267948963 0" />
             <geometry>
-                <mesh filename="package://fpga_bot_fpga_bot_description/meshes/AX-12A-022.stl" scale="0.001 0.001 0.001" />
+                <mesh filename="package://moveit_bot_fpga_bot_description/meshes/AX-12A-022.stl" scale="0.001 0.001 0.001" />
             </geometry>
         </visual>
         <collision name="AX-12A-022_collision">
             <origin xyz="0.01349999523797377 -2.474009810349287e-09 0.03699999604697733" rpy="-0.0 1.5707963267948963 0" />
             <geometry>
-                <mesh filename="package://fpga_bot_fpga_bot_description/meshes/AX-12A-022.stl" scale="0.001 0.001 0.001" />
+                <mesh filename="package://moveit_bot_fpga_bot_description/meshes/AX-12A-022.stl" scale="0.001 0.001 0.001" />
             </geometry>
         </collision>
     </link>
@@ -180,13 +180,13 @@
         <visual name="AX-12A-042_visual">
             <origin xyz="0.004499995237973771 3.953022646996374e-09 -2.474009810349287e-09" rpy="-2.7755575615629007e-16 1.5707963267948946 0" />
             <geometry>
-                <mesh filename="package://fpga_bot_fpga_bot_description/meshes/AX-12A-042.stl" scale="0.001 0.001 0.001" />
+                <mesh filename="package://moveit_bot_fpga_bot_description/meshes/AX-12A-042.stl" scale="0.001 0.001 0.001" />
             </geometry>
         </visual>
         <collision name="AX-12A-042_collision">
             <origin xyz="0.004499995237973771 3.953022646996374e-09 -2.474009810349287e-09" rpy="-2.7755575615629007e-16 1.5707963267948946 0" />
             <geometry>
-                <mesh filename="package://fpga_bot_fpga_bot_description/meshes/AX-12A-042.stl" scale="0.001 0.001 0.001" />
+                <mesh filename="package://moveit_bot_fpga_bot_description/meshes/AX-12A-042.stl" scale="0.001 0.001 0.001" />
             </geometry>
         </collision>
     </link>
@@ -199,13 +199,13 @@
         <visual name="pencil_holder_v2_visual">
             <origin xyz="-0.04830857212304362 3.953022340574819e-09 -0.15138807524241327" rpy="-2.7755575615629096e-16 1.5707963267948946 0" />
             <geometry>
-                <mesh filename="package://fpga_bot_fpga_bot_description/meshes/pencil_holder_v2.stl" scale="0.001 0.001 0.001" />
+                <mesh filename="package://moveit_bot_fpga_bot_description/meshes/pencil_holder_v2.stl" scale="0.001 0.001 0.001" />
             </geometry>
         </visual>
         <collision name="pencil_holder_v2_collision">
             <origin xyz="-0.04830857212304362 3.953022340574819e-09 -0.15138807524241327" rpy="-2.7755575615629096e-16 1.5707963267948946 0" />
             <geometry>
-                <mesh filename="package://fpga_bot_fpga_bot_description/meshes/pencil_holder_v2.stl" scale="0.001 0.001 0.001" />
+                <mesh filename="package://moveit_bot_fpga_bot_description/meshes/pencil_holder_v2.stl" scale="0.001 0.001 0.001" />
             </geometry>
         </collision>
     </link>

@@ -11,7 +11,7 @@
 3. Clone this github repo to your ROS2 workspace (`~/ros_ws/src`):
     ```bash
     cd ~/ros_ws/src
-    git clone git@github.com:jango175/fpga_bot.git
+    git clone git@github.com:jango175/moveit_bot.git
     ```
 
 3. Create your own MoveIt2 simulation package based on the URDF robot description:
