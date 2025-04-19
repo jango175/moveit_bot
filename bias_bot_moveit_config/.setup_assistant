@@ -1,0 +1,25 @@
+moveit_setup_assistant_config:
+  urdf:
+    package: moveit_bot_bias_bot_description
+    relative_path: urdf/BIAS_bot.urdf
+  srdf:
+    relative_path: config/URDF_assembly.srdf
+  package_settings:
+    author_name: jango
+    author_email: jan.gorski175@gmail.com
+    generated_timestamp: 1745094347
+  control_xacro:
+    command:
+      - position
+    state:
+      - position
+      - velocity
+  modified_urdf:
+    xacros:
+      - control_xacro
+  control_xacro:
+    command:
+      - position
+    state:
+      - position
+      - velocity
