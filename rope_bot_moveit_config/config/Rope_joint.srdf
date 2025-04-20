@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--This does not replace URDF, and is not an extension of URDF.
+    This is a format for representing semantic information about the robot structure.
+    A URDF file must exist for this robot as well, where the joints and the links that are referenced are defined
+-->
+<robot name="Rope_joint">
+    <!--GROUPS: Representation of a set of joints and links. This can be useful for specifying DOF to plan for, defining arms, end effectors, etc-->
+    <!--LINKS: When a link is specified, the parent joint of that link (if it exists) is automatically included-->
+    <!--JOINTS: When a joint is specified, the child link of that joint (which will always exist) is automatically included-->
+    <!--CHAINS: When a chain is specified, all the links along the chain (including endpoints) are included in the group. Additionally, all the joints that are parents to included links are also included. This means that joints along the chain and the parent joint of the base link are included in the group-->
+    <!--SUBGROUPS: Groups can also be formed by referencing to already defined group names-->
+    <group name="rope_bot_arm">
+        <joint name="virtual_joint"/>
+        <joint name="Joint_M_Revolute-33"/>
+        <joint name="cONNECTOR_Revolute-34"/>
+        <joint name="Joint_Rigid-35"/>
+        <joint name="Joint1_Rigid-38"/>
+        <joint name="angle_arm_Rigid-39"/>
+        <joint name="Joint_M2_Rigid-44"/>
+        <joint name="Joint_M3_Revolute-45"/>
+        <joint name="cONNECTOR1_Revolute-46"/>
+        <joint name="Joint2_Rigid-47"/>
+        <joint name="Joint3_Rigid-48"/>
+        <joint name="Arm_mount_Rigid-49"/>
+        <joint name="CF_rod_Rigid-50"/>
+        <joint name="elbow_mount_Rigid-51"/>
+        <joint name="Joint_M4_Rigid-52"/>
+        <joint name="Joint_M5_Revolute-58"/>
+        <joint name="cONNECTOR2_Revolute-59"/>
+        <joint name="Joint4_Rigid-60"/>
+        <joint name="Joint5_Rigid-61"/>
+        <joint name="Arm_mount1_Rigid-62"/>
+        <joint name="CF_rod1_Rigid-63"/>
+        <joint name="elbow_mount1_Rigid-64"/>
+        <joint name="Joint_M6_Rigid-65"/>
+        <joint name="Joint_M7_Revolute-66"/>
+        <joint name="cONNECTOR3_Revolute-67"/>
+        <joint name="Joint6_Rigid-68"/>
+        <joint name="Joint7_Rigid-69"/>
+        <joint name="Arm_mount2_Rigid-70"/>
+        <joint name="Joint_Rigid-36"/>
+        <joint name="Joint_M_Rigid-32"/>
+    </group>
+    <!--GROUP STATES: Purpose: Define a named state for a particular group, in terms of joint values. This is useful to define states like 'folded arms'-->
+    <group_state name="rest" group="rope_bot_arm">
+        <joint name="Joint_M3_Revolute-45" value="0"/>
+        <joint name="Joint_M5_Revolute-58" value="0"/>
+        <joint name="Joint_M7_Revolute-66" value="0"/>
+        <joint name="Joint_M_Revolute-33" value="0"/>
+        <joint name="cONNECTOR1_Revolute-46" value="0"/>
+        <joint name="cONNECTOR2_Revolute-59" value="0"/>
+        <joint name="cONNECTOR3_Revolute-67" value="0"/>
+        <joint name="cONNECTOR_Revolute-34" value="0"/>
+    </group_state>
+    <!--END EFFECTOR: Purpose: Represent information about an end effector.-->
+    <end_effector name="end" parent_link="CF_end" group="rope_bot_arm"/>
+    <!--VIRTUAL JOINT: Purpose: this element defines a virtual joint between a robot link and an external frame of reference (considered fixed with respect to the robot)-->
+    <virtual_joint name="virtual_joint" type="fixed" parent_frame="world" child_link="Joint_M"/>
+    <!--DISABLE COLLISIONS: By default it is assumed that any link of the robot could potentially come into collision with any other link in the robot. This tag disables collision checking between a specified pair of links. -->
+    <disable_collisions link1="Arm_mount" link2="Arm_mount2" reason="Never"/>
+    <disable_collisions link1="Arm_mount" link2="CF_end" reason="Never"/>
+    <disable_collisions link1="Arm_mount" link2="CF_rod" reason="Adjacent"/>
+    <disable_collisions link1="Arm_mount" link2="Joint2" reason="Never"/>
+    <disable_collisions link1="Arm_mount" link2="Joint3" reason="Adjacent"/>
+    <disable_collisions link1="Arm_mount" link2="Joint4" reason="Never"/>
+    <disable_collisions link1="Arm_mount" link2="Joint6" reason="Never"/>
+    <disable_collisions link1="Arm_mount" link2="Joint7" reason="Never"/>
+    <disable_collisions link1="Arm_mount" link2="Joint_M4" reason="Never"/>
+    <disable_collisions link1="Arm_mount" link2="Joint_M5" reason="Never"/>
+    <disable_collisions link1="Arm_mount" link2="Joint_M6" reason="Never"/>
+    <disable_collisions link1="Arm_mount" link2="Joint_M7" reason="Never"/>
+    <disable_collisions link1="Arm_mount" link2="Rope_tensioner" reason="Never"/>
+    <disable_collisions link1="Arm_mount" link2="angle_arm" reason="Never"/>
+    <disable_collisions link1="Arm_mount" link2="cONNECTOR2" reason="Never"/>
+    <disable_collisions link1="Arm_mount" link2="cONNECTOR3" reason="Never"/>
+    <disable_collisions link1="Arm_mount" link2="elbow_mount" reason="Never"/>
+    <disable_collisions link1="Arm_mount1" link2="CF_rod1" reason="Adjacent"/>
+    <disable_collisions link1="Arm_mount1" link2="Joint4" reason="Never"/>
+    <disable_collisions link1="Arm_mount1" link2="Joint5" reason="Adjacent"/>
+    <disable_collisions link1="Arm_mount1" link2="Joint6" reason="Never"/>
+    <disable_collisions link1="Arm_mount1" link2="Joint_M6" reason="Never"/>
+    <disable_collisions link1="Arm_mount1" link2="Joint_M7" reason="Never"/>
+    <disable_collisions link1="Arm_mount1" link2="cONNECTOR3" reason="Never"/>
+    <disable_collisions link1="Arm_mount1" link2="elbow_mount1" reason="Never"/>
+    <disable_collisions link1="Arm_mount2" link2="CF_end" reason="Adjacent"/>
+    <disable_collisions link1="Arm_mount2" link2="CF_rod" reason="Never"/>
+    <disable_collisions link1="Arm_mount2" link2="Joint5" reason="Never"/>
+    <disable_collisions link1="Arm_mount2" link2="Joint6" reason="Never"/>
+    <disable_collisions link1="Arm_mount2" link2="Joint7" reason="Adjacent"/>
+    <disable_collisions link1="Arm_mount2" link2="Joint_M4" reason="Never"/>
+    <disable_collisions link1="Arm_mount2" link2="elbow_mount" reason="Never"/>
+    <disable_collisions link1="CF_end" link2="CF_rod" reason="Never"/>
+    <disable_collisions link1="CF_end" link2="CF_rod1" reason="Never"/>
+    <disable_collisions link1="CF_end" link2="Joint2" reason="Never"/>
+    <disable_collisions link1="CF_end" link2="Joint3" reason="Never"/>
+    <disable_collisions link1="CF_end" link2="Joint4" reason="Never"/>
+    <disable_collisions link1="CF_end" link2="Joint5" reason="Never"/>
+    <disable_collisions link1="CF_end" link2="Joint6" reason="Never"/>
+    <disable_collisions link1="CF_end" link2="Joint7" reason="Never"/>
+    <disable_collisions link1="CF_end" link2="Joint_M4" reason="Never"/>
+    <disable_collisions link1="CF_end" link2="Joint_M5" reason="Never"/>
+    <disable_collisions link1="CF_end" link2="cONNECTOR2" reason="Never"/>
+    <disable_collisions link1="CF_end" link2="elbow_mount" reason="Never"/>
+    <disable_collisions link1="CF_end" link2="elbow_mount1" reason="Never"/>
+    <disable_collisions link1="CF_rod" link2="CF_rod1" reason="Never"/>
+    <disable_collisions link1="CF_rod" link2="Joint2" reason="Never"/>
+    <disable_collisions link1="CF_rod" link2="Joint3" reason="Never"/>
+    <disable_collisions link1="CF_rod" link2="Joint4" reason="Never"/>
+    <disable_collisions link1="CF_rod" link2="Joint5" reason="Never"/>
+    <disable_collisions link1="CF_rod" link2="Joint6" reason="Never"/>
+    <disable_collisions link1="CF_rod" link2="Joint7" reason="Never"/>
+    <disable_collisions link1="CF_rod" link2="Joint_M4" reason="Never"/>
+    <disable_collisions link1="CF_rod" link2="Joint_M5" reason="Never"/>
+    <disable_collisions link1="CF_rod" link2="Joint_M6" reason="Never"/>
+    <disable_collisions link1="CF_rod" link2="Joint_M7" reason="Never"/>
+    <disable_collisions link1="CF_rod" link2="Rope_tensioner" reason="Never"/>
+    <disable_collisions link1="CF_rod" link2="angle_arm" reason="Never"/>
+    <disable_collisions link1="CF_rod" link2="cONNECTOR2" reason="Never"/>
+    <disable_collisions link1="CF_rod" link2="cONNECTOR3" reason="Never"/>
+    <disable_collisions link1="CF_rod" link2="elbow_mount" reason="Adjacent"/>
+    <disable_collisions link1="CF_rod" link2="elbow_mount1" reason="Never"/>
+    <disable_collisions link1="CF_rod1" link2="Joint4" reason="Never"/>
+    <disable_collisions link1="CF_rod1" link2="Joint5" reason="Never"/>
+    <disable_collisions link1="CF_rod1" link2="Joint6" reason="Never"/>
+    <disable_collisions link1="CF_rod1" link2="Joint7" reason="Never"/>
+    <disable_collisions link1="CF_rod1" link2="Joint_M6" reason="Never"/>
+    <disable_collisions link1="CF_rod1" link2="Joint_M7" reason="Never"/>
+    <disable_collisions link1="CF_rod1" link2="cONNECTOR3" reason="Never"/>
+    <disable_collisions link1="CF_rod1" link2="elbow_mount" reason="Never"/>
+    <disable_collisions link1="CF_rod1" link2="elbow_mount1" reason="Adjacent"/>
+    <disable_collisions link1="Joint" link2="Joint1" reason="Adjacent"/>
+    <disable_collisions link1="Joint" link2="Joint_M" reason="Default"/>
+    <disable_collisions link1="Joint" link2="Joint_M2" reason="Never"/>
+    <disable_collisions link1="Joint" link2="Joint_M3" reason="Never"/>
+    <disable_collisions link1="Joint" link2="Rope_tensioner" reason="Adjacent"/>
+    <disable_collisions link1="Joint" link2="angle_arm" reason="Never"/>
+    <disable_collisions link1="Joint" link2="cONNECTOR" reason="Adjacent"/>
+    <disable_collisions link1="Joint" link2="cONNECTOR1" reason="Never"/>
+    <disable_collisions link1="Joint1" link2="Joint_M1" reason="Default"/>
+    <disable_collisions link1="Joint1" link2="Joint_M2" reason="Never"/>
+    <disable_collisions link1="Joint1" link2="Joint_M3" reason="Never"/>
+    <disable_collisions link1="Joint1" link2="Rope_tensioner" reason="Never"/>
+    <disable_collisions link1="Joint1" link2="angle_arm" reason="Adjacent"/>
+    <disable_collisions link1="Joint1" link2="cONNECTOR" reason="Never"/>
+    <disable_collisions link1="Joint1" link2="cONNECTOR1" reason="Never"/>
+    <disable_collisions link1="Joint2" link2="Joint3" reason="Adjacent"/>
+    <disable_collisions link1="Joint2" link2="Joint6" reason="Never"/>
+    <disable_collisions link1="Joint2" link2="Joint_M3" reason="Default"/>
+    <disable_collisions link1="Joint2" link2="Joint_M4" reason="Never"/>
+    <disable_collisions link1="Joint2" link2="Joint_M5" reason="Never"/>
+    <disable_collisions link1="Joint2" link2="Joint_M6" reason="Never"/>
+    <disable_collisions link1="Joint2" link2="Joint_M7" reason="Never"/>
+    <disable_collisions link1="Joint2" link2="Rope_tensioner" reason="Never"/>
+    <disable_collisions link1="Joint2" link2="angle_arm" reason="Never"/>
+    <disable_collisions link1="Joint2" link2="cONNECTOR1" reason="Adjacent"/>
+    <disable_collisions link1="Joint2" link2="cONNECTOR2" reason="Never"/>
+    <disable_collisions link1="Joint2" link2="cONNECTOR3" reason="Never"/>
+    <disable_collisions link1="Joint2" link2="elbow_mount" reason="Never"/>
+    <disable_collisions link1="Joint3" link2="Joint6" reason="Never"/>
+    <disable_collisions link1="Joint3" link2="Joint_M2" reason="Default"/>
+    <disable_collisions link1="Joint3" link2="Joint_M4" reason="Never"/>
+    <disable_collisions link1="Joint3" link2="Joint_M5" reason="Never"/>
+    <disable_collisions link1="Joint3" link2="Joint_M6" reason="Never"/>
+    <disable_collisions link1="Joint3" link2="Joint_M7" reason="Never"/>
+    <disable_collisions link1="Joint3" link2="Rope_tensioner" reason="Never"/>
+    <disable_collisions link1="Joint3" link2="angle_arm" reason="Never"/>
+    <disable_collisions link1="Joint3" link2="cONNECTOR1" reason="Never"/>
+    <disable_collisions link1="Joint3" link2="cONNECTOR2" reason="Never"/>
+    <disable_collisions link1="Joint3" link2="cONNECTOR3" reason="Never"/>
+    <disable_collisions link1="Joint3" link2="elbow_mount" reason="Never"/>
+    <disable_collisions link1="Joint4" link2="Joint5" reason="Adjacent"/>
+    <disable_collisions link1="Joint4" link2="Joint6" reason="Never"/>
+    <disable_collisions link1="Joint4" link2="Joint_M6" reason="Never"/>
+    <disable_collisions link1="Joint4" link2="Joint_M7" reason="Never"/>
+    <disable_collisions link1="Joint4" link2="cONNECTOR2" reason="Adjacent"/>
+    <disable_collisions link1="Joint4" link2="cONNECTOR3" reason="Never"/>
+    <disable_collisions link1="Joint4" link2="elbow_mount" reason="Never"/>
+    <disable_collisions link1="Joint4" link2="elbow_mount1" reason="Never"/>
+    <disable_collisions link1="Joint5" link2="Joint6" reason="Never"/>
+    <disable_collisions link1="Joint5" link2="Joint7" reason="Never"/>
+    <disable_collisions link1="Joint5" link2="Joint_M4" reason="Default"/>
+    <disable_collisions link1="Joint5" link2="Joint_M6" reason="Never"/>
+    <disable_collisions link1="Joint5" link2="Joint_M7" reason="Never"/>
+    <disable_collisions link1="Joint5" link2="cONNECTOR2" reason="Never"/>
+    <disable_collisions link1="Joint5" link2="cONNECTOR3" reason="Never"/>
+    <disable_collisions link1="Joint5" link2="elbow_mount1" reason="Never"/>
+    <disable_collisions link1="Joint6" link2="Joint7" reason="Adjacent"/>
+    <disable_collisions link1="Joint6" link2="Joint_M4" reason="Never"/>
+    <disable_collisions link1="Joint6" link2="Joint_M5" reason="Never"/>
+    <disable_collisions link1="Joint6" link2="Joint_M7" reason="Default"/>
+    <disable_collisions link1="Joint6" link2="cONNECTOR2" reason="Never"/>
+    <disable_collisions link1="Joint6" link2="cONNECTOR3" reason="Adjacent"/>
+    <disable_collisions link1="Joint6" link2="elbow_mount" reason="Never"/>
+    <disable_collisions link1="Joint6" link2="elbow_mount1" reason="Never"/>
+    <disable_collisions link1="Joint7" link2="Joint_M4" reason="Never"/>
+    <disable_collisions link1="Joint7" link2="Joint_M6" reason="Default"/>
+    <disable_collisions link1="Joint7" link2="cONNECTOR3" reason="Never"/>
+    <disable_collisions link1="Joint7" link2="elbow_mount" reason="Never"/>
+    <disable_collisions link1="Joint_M" link2="Joint_M1" reason="Adjacent"/>
+    <disable_collisions link1="Joint_M" link2="Joint_M2" reason="Never"/>
+    <disable_collisions link1="Joint_M" link2="Joint_M3" reason="Never"/>
+    <disable_collisions link1="Joint_M" link2="Rope_tensioner" reason="Never"/>
+    <disable_collisions link1="Joint_M" link2="angle_arm" reason="Never"/>
+    <disable_collisions link1="Joint_M" link2="cONNECTOR" reason="Adjacent"/>
+    <disable_collisions link1="Joint_M1" link2="Joint_M2" reason="Never"/>
+    <disable_collisions link1="Joint_M1" link2="Joint_M3" reason="Never"/>
+    <disable_collisions link1="Joint_M1" link2="Rope_tensioner" reason="Never"/>
+    <disable_collisions link1="Joint_M1" link2="angle_arm" reason="Never"/>
+    <disable_collisions link1="Joint_M1" link2="cONNECTOR" reason="Never"/>
+    <disable_collisions link1="Joint_M2" link2="Joint_M3" reason="Adjacent"/>
+    <disable_collisions link1="Joint_M2" link2="Rope_tensioner" reason="Never"/>
+    <disable_collisions link1="Joint_M2" link2="angle_arm" reason="Adjacent"/>
+    <disable_collisions link1="Joint_M2" link2="cONNECTOR" reason="Never"/>
+    <disable_collisions link1="Joint_M2" link2="cONNECTOR1" reason="Never"/>
+    <disable_collisions link1="Joint_M3" link2="Rope_tensioner" reason="Never"/>
+    <disable_collisions link1="Joint_M3" link2="angle_arm" reason="Never"/>
+    <disable_collisions link1="Joint_M3" link2="cONNECTOR" reason="Never"/>
+    <disable_collisions link1="Joint_M3" link2="cONNECTOR1" reason="Adjacent"/>
+    <disable_collisions link1="Joint_M4" link2="Joint_M5" reason="Adjacent"/>
+    <disable_collisions link1="Joint_M4" link2="Joint_M6" reason="Never"/>
+    <disable_collisions link1="Joint_M4" link2="Joint_M7" reason="Never"/>
+    <disable_collisions link1="Joint_M4" link2="Rope_tensioner" reason="Never"/>
+    <disable_collisions link1="Joint_M4" link2="cONNECTOR2" reason="Never"/>
+    <disable_collisions link1="Joint_M4" link2="cONNECTOR3" reason="Never"/>
+    <disable_collisions link1="Joint_M4" link2="elbow_mount" reason="Adjacent"/>
+    <disable_collisions link1="Joint_M5" link2="Joint_M7" reason="Never"/>
+    <disable_collisions link1="Joint_M5" link2="Rope_tensioner" reason="Never"/>
+    <disable_collisions link1="Joint_M5" link2="cONNECTOR2" reason="Adjacent"/>
+    <disable_collisions link1="Joint_M5" link2="cONNECTOR3" reason="Never"/>
+    <disable_collisions link1="Joint_M5" link2="elbow_mount" reason="Never"/>
+    <disable_collisions link1="Joint_M6" link2="Joint_M7" reason="Adjacent"/>
+    <disable_collisions link1="Joint_M6" link2="cONNECTOR3" reason="Never"/>
+    <disable_collisions link1="Joint_M6" link2="elbow_mount" reason="Never"/>
+    <disable_collisions link1="Joint_M6" link2="elbow_mount1" reason="Adjacent"/>
+    <disable_collisions link1="Joint_M7" link2="cONNECTOR2" reason="Never"/>
+    <disable_collisions link1="Joint_M7" link2="cONNECTOR3" reason="Adjacent"/>
+    <disable_collisions link1="Joint_M7" link2="elbow_mount" reason="Never"/>
+    <disable_collisions link1="Joint_M7" link2="elbow_mount1" reason="Never"/>
+    <disable_collisions link1="Rope_tensioner" link2="angle_arm" reason="Never"/>
+    <disable_collisions link1="Rope_tensioner" link2="cONNECTOR" reason="Never"/>
+    <disable_collisions link1="Rope_tensioner" link2="cONNECTOR1" reason="Never"/>
+    <disable_collisions link1="Rope_tensioner" link2="elbow_mount" reason="Never"/>
+    <disable_collisions link1="angle_arm" link2="cONNECTOR" reason="Never"/>
+    <disable_collisions link1="angle_arm" link2="cONNECTOR1" reason="Never"/>
+    <disable_collisions link1="cONNECTOR2" link2="cONNECTOR3" reason="Never"/>
+    <disable_collisions link1="cONNECTOR2" link2="elbow_mount" reason="Never"/>
+    <disable_collisions link1="cONNECTOR3" link2="elbow_mount" reason="Never"/>
+    <disable_collisions link1="cONNECTOR3" link2="elbow_mount1" reason="Never"/>
+    <disable_collisions link1="elbow_mount" link2="elbow_mount1" reason="Never"/>
+</robot>

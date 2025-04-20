@@ -1,0 +1,11 @@
+# Default initial positions for Rope_joint's ros2_control fake system
+
+initial_positions:
+  Joint_M3_Revolute-45: 0
+  Joint_M5_Revolute-58: 0
+  Joint_M7_Revolute-66: 0
+  Joint_M_Revolute-33: 0
+  cONNECTOR1_Revolute-46: 0
+  cONNECTOR2_Revolute-59: 0
+  cONNECTOR3_Revolute-67: 0
+  cONNECTOR_Revolute-34: 0
