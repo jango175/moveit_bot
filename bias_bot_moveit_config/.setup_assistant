@@ -3,11 +3,11 @@ moveit_setup_assistant_config:
     package: moveit_bot_bias_bot_description
     relative_path: urdf/BIAS_bot.urdf
   srdf:
-    relative_path: config/URDF_assembly.srdf
+    relative_path: config/new_urdf_assembly.srdf
   package_settings:
-    author_name: jango
+    author_name: jango175
     author_email: jan.gorski175@gmail.com
-    generated_timestamp: 1745094347
+    generated_timestamp: 1745928897
   control_xacro:
     command:
       - position

@@ -8,32 +8,12 @@ default_acceleration_scaling_factor: 0.1
 # Specific joint properties can be changed with the keys [max_position, min_position, max_velocity, max_acceleration]
 # Joint limits can be turned off with [has_velocity_limits, has_acceleration_limits]
 joint_limits:
-  XM430-W350-R_body1_Revolute-10:
+  joint_Revolute-3:
     has_velocity_limits: true
     max_velocity: 2.0
     has_acceleration_limits: true
     max_acceleration: 0.5
-  XM430-W350-R_body_Revolute-21:
-    has_velocity_limits: true
-    max_velocity: 2.0
-    has_acceleration_limits: true
-    max_acceleration: 0.5
-  cap_2_Revolute-34:
-    has_velocity_limits: true
-    max_velocity: 2.0
-    has_acceleration_limits: true
-    max_acceleration: 0.5
-  cap_Revolute-6:
-    has_velocity_limits: true
-    max_velocity: 2.0
-    has_acceleration_limits: true
-    max_acceleration: 0.5
-  servo_arm1_Revolute-35:
-    has_velocity_limits: true
-    max_velocity: 2.0
-    has_acceleration_limits: true
-    max_acceleration: 0.5
-  servo_arm_Revolute-37:
+  shoulder_Revolute-1:
     has_velocity_limits: true
     max_velocity: 2.0
     has_acceleration_limits: true

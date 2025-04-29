@@ -4,9 +4,9 @@
   <name>bias_bot_moveit_config</name>
   <version>0.3.0</version>
   <description>
-     An automatically generated package with all the configuration and launch files for using the URDF_assembly with the MoveIt Motion Planning Framework
+     An automatically generated package with all the configuration and launch files for using the new_urdf_assembly with the MoveIt Motion Planning Framework
   </description>
-  <maintainer email="jan.gorski175@gmail.com">jango</maintainer>
+  <maintainer email="jan.gorski175@gmail.com">jango175</maintainer>
 
   <license>BSD-3-Clause</license>
 
@@ -14,7 +14,7 @@
   <url type="bugtracker">https://github.com/moveit/moveit2/issues</url>
   <url type="repository">https://github.com/moveit/moveit2</url>
 
-  <author email="jan.gorski175@gmail.com">jango</author>
+  <author email="jan.gorski175@gmail.com">jango175</author>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
 

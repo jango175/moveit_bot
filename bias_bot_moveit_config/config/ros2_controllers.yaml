@@ -13,8 +13,7 @@ controller_manager:
 arm_controller:
   ros__parameters:
     joints:
-      - cap_Revolute-6
-      - cap_2_Revolute-34
+      - shoulder_Revolute-1
     command_interfaces:
       - position
     state_interfaces:

@@ -1,9 +1,4 @@
-# Default initial positions for URDF_assembly's ros2_control fake system
+# Default initial positions for new_urdf_assembly's ros2_control fake system
 
 initial_positions:
-  XM430-W350-R_body1_Revolute-10: 0
-  XM430-W350-R_body_Revolute-21: 0
-  cap_2_Revolute-34: 0
-  cap_Revolute-6: 0
-  servo_arm1_Revolute-35: 0
-  servo_arm_Revolute-37: 0
+  shoulder_Revolute-1: 0

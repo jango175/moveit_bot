@@ -1,6 +1,0 @@
-# Default initial positions for FPGA_bot's ros2_control fake system
-
-initial_positions:
-  AX-12A-021_Revolute-9: 0
-  AX-12A-022_Revolute-12: 0
-  AX-12A-02_Revolute-6: 0
