@@ -9,6 +9,7 @@
 #define MOVE_GROUP_NAME    "panda_arm"
 #define BASE_LINK_NAME     "panda_link0"
 
+
 geometry_msgs::msg::PoseStamped get_current_pose(moveit::planning_interface::MoveGroupInterface *move_group)
 {
   // Get the current pose of the robot's end-effector
@@ -36,7 +37,8 @@ geometry_msgs::msg::PoseStamped get_current_pose(moveit::planning_interface::Mov
   current_state->copyJointGroupPositions(joint_model_group, joint_values);
 
   RCLCPP_INFO(rclcpp::get_logger(PACKAGE_NAME), "Joint Values:");
-  for (size_t i = 0; i < joint_values.size(); ++i) {
+  for (size_t i = 0; i < joint_values.size(); ++i)
+  {
     RCLCPP_INFO(rclcpp::get_logger(PACKAGE_NAME), "Joint %zu: %.3f", i, joint_values[i]);
   }
 
@@ -44,7 +46,7 @@ geometry_msgs::msg::PoseStamped get_current_pose(moveit::planning_interface::Mov
 }
 
 
-int main(int argc, char * argv[])
+int main(int argc, char* argv[])
 {
   // Initialize ROS and create the Node
   rclcpp::init(argc, argv);
@@ -83,15 +85,17 @@ int main(int argc, char * argv[])
     current_pose.pose.position.x+0.2,
     current_pose.pose.position.y+0.2,
     0.5,  // Path length
-    12   // Number of points
+    50    // Number of points
   );
 
   RCLCPP_INFO(logger, "Generated path:");
-  for (const auto& point : path) {
+  for (const auto& point : path)
+  {
     RCLCPP_INFO(logger, "Point: x=%.3f, y=%.3f", point.x, point.y);
   }
 
-  for (const auto& point : path) {
+  for (const auto& point : path)
+  {
     // Set a target pose
     auto const target_pose = [&current_pose, &point]{
       geometry_msgs::msg::Pose msg;
@@ -114,13 +118,16 @@ int main(int argc, char * argv[])
     }();
 
     // Execute the plan
-    if(success) {
+    if(success)
+    {
       // Draw the trajectory
       draw_trajectory_tool_path(plan.trajectory);
       moveit_visual_tools.trigger();
 
       move_group_interface.execute(plan);
-    } else {
+    }
+    else
+    {
       RCLCPP_ERROR(logger, "Planning failed!");
     }
   }

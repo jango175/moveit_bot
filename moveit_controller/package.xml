@@ -5,7 +5,7 @@
   <version>0.0.0</version>
   <description>Universal moveit contorller</description>
   <maintainer email="jan.gorski175@gmail.com">jango</maintainer>
-  <license>Apache 2.0</license>
+  <license>Apache License 2.0</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
 

@@ -3,7 +3,8 @@
 #include <cmath>
 #include <fstream>
 
-struct Point2D {
+struct Point2D
+{
   double x;
   double y;
 };
@@ -22,7 +23,8 @@ std::vector<Point2D> generate_eight_shaped_path(
   Point2D point;
 
   // Generate points along the figure-8 path
-  for (int i = 0; i < num_points; ++i) {
+  for (int i = 0; i < num_points; ++i)
+  {
     double t = 2.0 * M_PI * i / num_points;
 
     // Parametric equation for a figure-8
