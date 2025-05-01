@@ -22,5 +22,5 @@
     cd ~/ros_ws
     colcon build --mixin release
     source install/setup.bash
-    ros2 launch rope_bot_moveit_config demo.launch.py
+    ros2 launch bias_bot_moveit_config demo.launch.py
     ```

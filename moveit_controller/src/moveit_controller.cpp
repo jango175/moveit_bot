@@ -1,12 +1,15 @@
 #include <memory>
 #include <rclcpp/rclcpp.hpp>
 #include <moveit/move_group_interface/move_group_interface.hpp>
+#include <moveit_visual_tools/moveit_visual_tools.h>
+
+#include "moveit_controller/eight_path.h"
 
 #define PACKAGE_NAME       "moveit_controller"
 #define MOVE_GROUP_NAME    "panda_arm"
+#define BASE_LINK_NAME     "panda_link0"
 
-
-void get_current_pose(moveit::planning_interface::MoveGroupInterface *move_group)
+geometry_msgs::msg::PoseStamped get_current_pose(moveit::planning_interface::MoveGroupInterface *move_group)
 {
   // Get the current pose of the robot's end-effector
   geometry_msgs::msg::PoseStamped current_pose = move_group->getCurrentPose();
@@ -36,6 +39,8 @@ void get_current_pose(moveit::planning_interface::MoveGroupInterface *move_group
   for (size_t i = 0; i < joint_values.size(); ++i) {
     RCLCPP_INFO(rclcpp::get_logger(PACKAGE_NAME), "Joint %zu: %.3f", i, joint_values[i]);
   }
+
+  return current_pose;
 }
 
 
@@ -60,32 +65,64 @@ int main(int argc, char * argv[])
   using moveit::planning_interface::MoveGroupInterface;
   auto move_group_interface = MoveGroupInterface(node, MOVE_GROUP_NAME);
 
+  // Construct and initialize MoveItVisualTools
+  auto moveit_visual_tools =
+      moveit_visual_tools::MoveItVisualTools{ node, BASE_LINK_NAME, rviz_visual_tools::RVIZ_MARKER_TOPIC,
+                                              move_group_interface.getRobotModel() };
+  moveit_visual_tools.deleteAllMarkers();
+  moveit_visual_tools.loadRemoteControl();
+
+  auto const draw_trajectory_tool_path =
+      [&moveit_visual_tools, jmg = move_group_interface.getRobotModel()->getJointModelGroup(MOVE_GROUP_NAME)](
+          auto const trajectory) { moveit_visual_tools.publishTrajectoryLine(trajectory, jmg); };
+
   // Get the current pose
-  get_current_pose(&move_group_interface);
+  geometry_msgs::msg::PoseStamped current_pose = move_group_interface.getCurrentPose();
 
-  // Set a target Pose
-  auto const target_pose = []{
-    geometry_msgs::msg::Pose msg;
-    msg.orientation.w = 1.0;
-    msg.position.x = 0.28;
-    msg.position.y = -0.2;
-    msg.position.z = 0.5;
-    return msg;
-  }();
-  move_group_interface.setPoseTarget(target_pose);
+  std::vector<Point2D> path = generate_eight_shaped_path(
+    current_pose.pose.position.x+0.2,
+    current_pose.pose.position.y+0.2,
+    0.5,  // Path length
+    12   // Number of points
+  );
 
-  // Create a plan to that target pose
-  auto const [success, plan] = [&move_group_interface]{
-    moveit::planning_interface::MoveGroupInterface::Plan msg;
-    auto const ok = static_cast<bool>(move_group_interface.plan(msg));
-    return std::make_pair(ok, msg);
-  }();
+  RCLCPP_INFO(logger, "Generated path:");
+  for (const auto& point : path) {
+    RCLCPP_INFO(logger, "Point: x=%.3f, y=%.3f", point.x, point.y);
+  }
 
-  // Execute the plan
-  if(success) {
-    move_group_interface.execute(plan);
-  } else {
-    RCLCPP_ERROR(logger, "Planning failed!");
+  for (const auto& point : path) {
+    // Set a target pose
+    auto const target_pose = [&current_pose, &point]{
+      geometry_msgs::msg::Pose msg;
+      msg.orientation.w = current_pose.pose.orientation.w;
+      msg.orientation.x = current_pose.pose.orientation.x;
+      msg.orientation.y = current_pose.pose.orientation.y;
+      msg.orientation.z = current_pose.pose.orientation.z;
+      msg.position.x = point.x;
+      msg.position.y = point.y;
+      msg.position.z = 0.2;
+      return msg;
+    }();
+    move_group_interface.setPoseTarget(target_pose);
+
+    // Create a plan to that target pose
+    auto const [success, plan] = [&move_group_interface]{
+      moveit::planning_interface::MoveGroupInterface::Plan msg;
+      auto const ok = static_cast<bool>(move_group_interface.plan(msg));
+      return std::make_pair(ok, msg);
+    }();
+
+    // Execute the plan
+    if(success) {
+      // Draw the trajectory
+      draw_trajectory_tool_path(plan.trajectory);
+      moveit_visual_tools.trigger();
+
+      move_group_interface.execute(plan);
+    } else {
+      RCLCPP_ERROR(logger, "Planning failed!");
+    }
   }
 
   // Get new pose
@@ -93,5 +130,6 @@ int main(int argc, char * argv[])
 
   // Shutdown ROS
   rclcpp::shutdown();
+  spinner.join();
   return 0;
 }
