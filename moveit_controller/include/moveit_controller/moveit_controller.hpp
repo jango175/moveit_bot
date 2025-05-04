@@ -8,6 +8,9 @@
 #include <moveit/robot_trajectory/robot_trajectory.hpp>
 #include <moveit/robot_state/robot_state.hpp>
 #include <moveit/trajectory_processing/time_optimal_trajectory_generation.hpp>
+#include <moveit_msgs/msg/robot_trajectory.hpp>
+#include <moveit/robot_state/conversions.hpp>
+
 
 #define MOVE_GROUP_NAME    "panda_arm"
 #define BASE_LINK_NAME     "panda_link0"
@@ -52,8 +55,7 @@ public:
     move_group_interface_(this->node_, MOVE_GROUP_NAME),
     robot_model_(this->move_group_interface_.getRobotModel()),
     joint_model_group_(this->robot_model_->getJointModelGroup(this->move_group_interface_.getName())),
-    moveit_visual_tools_(this->node_, BASE_LINK_NAME, rviz_visual_tools::RVIZ_MARKER_TOPIC,
-                        this->robot_model_)
+    moveit_visual_tools_(this->node_, BASE_LINK_NAME, rviz_visual_tools::RVIZ_MARKER_TOPIC, this->robot_model_)
   {
     this->clearMarkers();
   }
@@ -145,6 +147,13 @@ public:
   }
 
 
+  void draw_trajectory_tool_path(const moveit_msgs::msg::RobotTrajectory& trajectory)
+  {
+    this->moveit_visual_tools_.publishTrajectoryLine(trajectory, this->joint_model_group_);
+    this->moveit_visual_tools_.trigger();
+  }
+
+
   /**
    * @brief Set the target pose for the robot and execute the plan
    * 
@@ -154,10 +163,6 @@ public:
   {
     this->move_group_interface_.setPoseTarget(target_pose);
 
-    auto const draw_trajectory_tool_path = [this, jmg = this->joint_model_group_](auto const trajectory){
-      this->moveit_visual_tools_.publishTrajectoryLine(trajectory, jmg);
-    };
-
     // Create a plan to that target pose
     auto const [success, plan] = [this]{
       moveit::planning_interface::MoveGroupInterface::Plan msg;
@@ -165,13 +170,12 @@ public:
       return std::make_pair(ok, msg);
     }();
 
-    // Execute the plan
     if (success)
     {
       // Draw the trajectory
-      draw_trajectory_tool_path(plan.trajectory);
-      this->moveit_visual_tools_.trigger();
+      this->draw_trajectory_tool_path(plan.trajectory);
 
+      // Execute the plan
       this->move_group_interface_.execute(plan);
     }
     else
@@ -222,7 +226,12 @@ public:
   }
 
 
-  robot_trajectory::RobotTrajectory createTrajectoryFromPoints(const std::vector<Point3D>& waypoints)
+  /**
+   * @brief Create a trajectory from a set of waypoints
+   * 
+   * @param waypoints Vector of waypoints
+   */
+  void createTrajectoryFromPoints(const std::vector<Point3D>& waypoints)
   {
     // Create robot state and trajectory objects
     moveit::core::RobotState robot_state(this->robot_model_);
@@ -232,16 +241,13 @@ public:
     for (const auto& waypoint : waypoints)
     {
       // Create pose target from waypoint
-      geometry_msgs::msg::Pose target_pose;
-      target_pose.position.x = waypoint.x;
-      target_pose.position.y = waypoint.y;
-      target_pose.position.z = waypoint.z;
-
-      // Use the quaternion from the waypoint
-      target_pose.orientation.w = waypoint.qw;
-      target_pose.orientation.x = waypoint.qx;
-      target_pose.orientation.y = waypoint.qy;
-      target_pose.orientation.z = waypoint.qz;
+      geometry_msgs::msg::Pose target_pose = this->createTargetPose(waypoint.qw,
+                                                                    waypoint.qx,
+                                                                    waypoint.qy,
+                                                                    waypoint.qz,
+                                                                    waypoint.x,
+                                                                    waypoint.y,
+                                                                    waypoint.z);
 
       // Compute IK to get joint positions for this Cartesian pose
       bool found_ik = robot_state.setFromIK(this->joint_model_group_, target_pose);
@@ -278,13 +284,27 @@ public:
                   trajectory_msg.joint_trajectory.points.size(),
                   trajectory_msg.joint_trajectory.points.back().time_from_start.sec +
                   trajectory_msg.joint_trajectory.points.back().time_from_start.nanosec / 1e9);
+
+      // Create a plan
+      moveit::planning_interface::MoveGroupInterface::Plan plan;
+
+      moveit::core::RobotStatePtr current_state = this->move_group_interface_.getCurrentState();
+      moveit_msgs::msg::RobotState robot_state_msg;
+      moveit::core::robotStateToRobotStateMsg(*current_state, robot_state_msg);
+
+      plan.start_state = robot_state_msg;
+      plan.trajectory = trajectory_msg;
+
+      // Draw the trajectory
+      this->draw_trajectory_tool_path(plan.trajectory);
+
+      // Execute the plan
+      this->move_group_interface_.execute(plan);
     }
     else
     {
       RCLCPP_ERROR(this->logger_, "Failed to parameterize trajectory!");
     }
-
-    return trajectory;
   }
 
 

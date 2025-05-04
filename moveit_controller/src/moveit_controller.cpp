@@ -52,9 +52,9 @@ int main(int argc, char* argv[])
     current_pose.pose.orientation.x,
     current_pose.pose.orientation.y,
     current_pose.pose.orientation.z,
-    current_pose.pose.position.x + 0.2,
-    current_pose.pose.position.y + 0.2,
-    0.3
+    current_pose.pose.position.x,
+    current_pose.pose.position.y,
+    current_pose.pose.position.z
   };
   std::vector<Point3D> path = moveit_controller.generateEightShapedPath(start_point, 0.5, 50);
 
@@ -64,21 +64,45 @@ int main(int argc, char* argv[])
   //   RCLCPP_INFO(logger, "Point: x=%.3f, y=%.3f, z=%.3f", point.x, point.y, point.z);
   // }
 
+  // std::vector<Point3D> path = {
+  //   {current_pose.pose.orientation.w,
+  //    current_pose.pose.orientation.x,
+  //    current_pose.pose.orientation.y,
+  //    current_pose.pose.orientation.z,
+  //    current_pose.pose.position.x,
+  //    current_pose.pose.position.y,
+  //    current_pose.pose.position.z},
+
+  //   {current_pose.pose.orientation.w,
+  //    current_pose.pose.orientation.x,
+  //    current_pose.pose.orientation.y,
+  //    current_pose.pose.orientation.z,
+  //    current_pose.pose.position.x + 0.3,
+  //    current_pose.pose.position.y + 0.3,
+  //    0.4},
+
+  //   {current_pose.pose.orientation.w,
+  //    current_pose.pose.orientation.x,
+  //    current_pose.pose.orientation.y,
+  //    current_pose.pose.orientation.z,
+  //    current_pose.pose.position.x + 0.3,
+  //    current_pose.pose.position.y + 0.1,
+  //    0.2},
+  // };
+
   moveit_controller.createTrajectoryFromPoints(path);
 
-  for (const auto& point : path)
-  {
-    auto const target_pose = moveit_controller.createTargetPose(
-      point.qw,
-      point.qx,
-      point.qy,
-      point.qz,
-      point.x,
-      point.y,
-      point.z
-    );
-    moveit_controller.setPoseTarget(target_pose);
-  }
+  // for (const auto& point : path)
+  // {
+  //   auto const target_pose = moveit_controller.createTargetPose(point.qw,
+  //                                                               point.qx,
+  //                                                               point.qy,
+  //                                                               point.qz,
+  //                                                               point.x,
+  //                                                               point.y,
+  //                                                               point.z);
+  //   moveit_controller.setPoseTarget(target_pose);
+  // }
 
   // Shutdown ROS
   rclcpp::shutdown();

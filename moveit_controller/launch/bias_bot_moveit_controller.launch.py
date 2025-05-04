@@ -15,6 +15,7 @@ def generate_launch_description():
             moveit_config.robot_description, # Load URDF
             moveit_config.robot_description_semantic, # Load SRDF
             moveit_config.robot_description_kinematics, # Load kinematics.yaml
+            moveit_config.joint_limits, # Load joint_limits.yaml
         ],
     )
 
