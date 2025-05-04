@@ -23,6 +23,12 @@ ament_target_dependencies(
   "moveit_visual_tools"
 )
 
+if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/launch")
+  install(
+    DIRECTORY launch
+    DESTINATION share/${PROJECT_NAME})
+endif()
+
 install(TARGETS moveit_controller
   DESTINATION lib/${PROJECT_NAME})
 

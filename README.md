@@ -24,3 +24,16 @@
     source install/setup.bash
     ros2 launch bias_bot_moveit_config demo.launch.py
     ```
+
+5. Launch the controller for the desired robot:
+    * for tests use panda robot:
+    ```bash
+    source install/setup.bash
+    ros2 launch moveit_controller panda_moveit_controller.launch.py
+    ```
+
+    * for final robot:
+    ```bash
+    source install/setup.bash
+    ros2 launch moveit_controller bias_bot_moveit_controller.launch.py
+    ```
