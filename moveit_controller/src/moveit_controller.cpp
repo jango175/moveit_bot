@@ -90,8 +90,9 @@ int main(int argc, char* argv[])
   //    0.2},
   // };
 
-  moveit_controller.createTrajectoryFromPoints(path);
+  moveit_controller.setTrajectoryFromPoints(path);
 
+  // go from point to point
   // for (const auto& point : path)
   // {
   //   auto const target_pose = moveit_controller.createTargetPose(point.qw,

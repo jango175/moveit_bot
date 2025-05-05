@@ -147,6 +147,11 @@ public:
   }
 
 
+  /**
+   * @brief Draw the trajectory of the tool path
+   * 
+   * @param trajectory Robot trajectory
+   */
   void draw_trajectory_tool_path(const moveit_msgs::msg::RobotTrajectory& trajectory)
   {
     this->moveit_visual_tools_.publishTrajectoryLine(trajectory, this->joint_model_group_);
@@ -231,11 +236,16 @@ public:
    * 
    * @param waypoints Vector of waypoints
    */
-  void createTrajectoryFromPoints(const std::vector<Point3D>& waypoints)
+  void setTrajectoryFromPoints(const std::vector<Point3D>& waypoints)
   {
     // Create robot state and trajectory objects
     moveit::core::RobotState robot_state(this->robot_model_);
     robot_trajectory::RobotTrajectory trajectory(this->robot_model_, this->joint_model_group_);
+
+    // Add the start state to the trajectory
+    robot_state.setJointGroupPositions(this->joint_model_group_, this->getJointValues());
+    robot_state.enforceBounds();
+    trajectory.addPrefixWayPoint(robot_state, 0.1);
 
     // Add each waypoint to the trajectory
     for (const auto& waypoint : waypoints)
@@ -287,12 +297,6 @@ public:
 
       // Create a plan
       moveit::planning_interface::MoveGroupInterface::Plan plan;
-
-      moveit::core::RobotStatePtr current_state = this->move_group_interface_.getCurrentState();
-      moveit_msgs::msg::RobotState robot_state_msg;
-      moveit::core::robotStateToRobotStateMsg(*current_state, robot_state_msg);
-
-      plan.start_state = robot_state_msg;
       plan.trajectory = trajectory_msg;
 
       // Draw the trajectory
