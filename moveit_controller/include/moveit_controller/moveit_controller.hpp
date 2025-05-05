@@ -12,24 +12,6 @@
 #include <moveit/robot_state/conversions.hpp>
 
 
-#define MOVE_GROUP_NAME    "panda_arm"
-#define BASE_LINK_NAME     "panda_link0"
-
-
-// 3D point structure
-struct Point3D
-{
-  double qw;
-  double qx;
-  double qy;
-  double qz;
-
-  double x;
-  double y;
-  double z;
-};
-
-
 /**
  * @brief MoveItController class
  */
@@ -49,13 +31,14 @@ public:
    * 
    * @param node_ Shared pointer to the ROS node
    */
-  MoveItController(rclcpp::Node::SharedPtr node)
+  MoveItController(rclcpp::Node::SharedPtr node, std::string move_group_name)
     : node_(node),
     logger_(rclcpp::get_logger(this->node_->get_name())),
-    move_group_interface_(this->node_, MOVE_GROUP_NAME),
+    move_group_interface_(this->node_, move_group_name),
     robot_model_(this->move_group_interface_.getRobotModel()),
     joint_model_group_(this->robot_model_->getJointModelGroup(this->move_group_interface_.getName())),
-    moveit_visual_tools_(this->node_, BASE_LINK_NAME, rviz_visual_tools::RVIZ_MARKER_TOPIC, this->robot_model_)
+    moveit_visual_tools_(this->node_, this->move_group_interface_.getPlanningFrame(),
+                         rviz_visual_tools::RVIZ_MARKER_TOPIC, this->robot_model_)
   {
     this->clearMarkers();
   }
@@ -193,50 +176,53 @@ public:
   /**
    * @brief Generate a figure-8 shaped path
    * 
-   * @param start_point Starting point of the path
+   * @param start_point Starting pose of the path
    * @param path_length Length of the path
    * @param num_points Number of points in the path
    * 
-   * @return Vector of points representing the figure-8 path
+   * @return Vector of poses representing the figure-8 path
    */
-  std::vector<Point3D> generateEightShapedPath(Point3D start_point, double path_length, int num_points = 100)
+  std::vector<geometry_msgs::msg::Pose> generateEightShapedPath(
+    geometry_msgs::msg::Pose start_pose,
+    double path_length,
+    int num_points = 100)
   {
-    std::vector<Point3D> path;
+    std::vector<geometry_msgs::msg::Pose> path;
 
     // Calculate the radius of each circle in the figure-8
     // The total length of a figure-8 made of two circles is approximately 4*r
     double radius = path_length / 4.0;
-    Point3D point;
+    geometry_msgs::msg::Pose pose;
 
     // Generate points along the figure-8 path
     for (int i = 0; i < num_points; ++i)
     {
       double t = 2.0 * M_PI * i / num_points;
 
-      point = start_point;
+      pose = start_pose;
 
       // Parametric equation for a figure-8
       // Using lemniscate of Gerono: x = cos(t), y = sin(t)*cos(t)
       // Scaled and translated to the desired position and size
-      point.x += radius * sin(t);
-      point.y += radius * sin(t) * cos(t);
+      pose.position.x += radius * sin(t);
+      pose.position.y += radius * sin(t) * cos(t);
 
-      path.push_back(point);
+      path.push_back(pose);
     }
 
-    // Back to the starting point
-    path.push_back(start_point);
+    // Back to the starting pose
+    path.push_back(start_pose);
 
     return path;
   }
 
 
   /**
-   * @brief Create a trajectory from a set of waypoints
+   * @brief Set a trajectory from a set of waypoints
    * 
    * @param waypoints Vector of waypoints
    */
-  void setTrajectoryFromPoints(const std::vector<Point3D>& waypoints)
+  void setTrajectoryTarget(const std::vector<geometry_msgs::msg::Pose>& waypoints)
   {
     // Create robot state and trajectory objects
     moveit::core::RobotState robot_state(this->robot_model_);
@@ -250,22 +236,13 @@ public:
     // Add each waypoint to the trajectory
     for (const auto& waypoint : waypoints)
     {
-      // Create pose target from waypoint
-      geometry_msgs::msg::Pose target_pose = this->createTargetPose(waypoint.qw,
-                                                                    waypoint.qx,
-                                                                    waypoint.qy,
-                                                                    waypoint.qz,
-                                                                    waypoint.x,
-                                                                    waypoint.y,
-                                                                    waypoint.z);
-
       // Compute IK to get joint positions for this Cartesian pose
-      bool found_ik = robot_state.setFromIK(this->joint_model_group_, target_pose);
+      bool found_ik = robot_state.setFromIK(this->joint_model_group_, waypoint);
       
       if (!found_ik)
       {
         RCLCPP_WARN(this->logger_, "IK solution not found for waypoint (%f, %f, %f)", 
-                    waypoint.x, waypoint.y, waypoint.z);
+                    waypoint.position.x, waypoint.position.y, waypoint.position.z);
         continue; // Skip this waypoint
       }
 

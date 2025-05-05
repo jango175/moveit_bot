@@ -1,7 +1,7 @@
 #include <rclcpp/rclcpp.hpp>
 #include "moveit_controller/moveit_controller.hpp"
 
-#define PACKAGE_NAME    "moveit_controller"
+#define PACKAGE_NAME       "moveit_controller"
 
 
 /**
@@ -21,6 +21,10 @@ int main(int argc, char* argv[])
     rclcpp::NodeOptions().automatically_declare_parameters_from_overrides(true)
   );
 
+  // Get the move group name from the parameter server
+  std::string move_group_name;
+  node->get_parameter("move_group_interface_name", move_group_name);
+
   // Create a ROS logger
   auto const logger = rclcpp::get_logger(node->get_name());
 
@@ -30,7 +34,7 @@ int main(int argc, char* argv[])
   std::thread spinner = std::thread([&executor]() { executor.spin(); });
 
   // Create the MoveIt Controller
-  MoveItController moveit_controller(node);
+  MoveItController moveit_controller(node, move_group_name);
 
   // Get the current pose
   geometry_msgs::msg::PoseStamped current_pose = moveit_controller.getCurrentPose();
@@ -47,7 +51,8 @@ int main(int argc, char* argv[])
               current_pose.pose.orientation.z,
               current_pose.pose.orientation.w);
 
-  Point3D start_point = {
+  // Generate a figure-8 shaped path
+  geometry_msgs::msg::Pose start_pose = moveit_controller.createTargetPose(
     current_pose.pose.orientation.w,
     current_pose.pose.orientation.x,
     current_pose.pose.orientation.y,
@@ -55,44 +60,12 @@ int main(int argc, char* argv[])
     current_pose.pose.position.x,
     current_pose.pose.position.y,
     current_pose.pose.position.z
-  };
-  std::vector<Point3D> path = moveit_controller.generateEightShapedPath(start_point, 0.5, 50);
+  );
+  std::vector<geometry_msgs::msg::Pose> path = moveit_controller.generateEightShapedPath(start_pose, 0.5, 50);
 
-  // RCLCPP_INFO(logger, "Generated path:");
-  // for (const auto& point : path)
-  // {
-  //   RCLCPP_INFO(logger, "Point: x=%.3f, y=%.3f, z=%.3f", point.x, point.y, point.z);
-  // }
+  moveit_controller.setTrajectoryTarget(path);
 
-  // std::vector<Point3D> path = {
-  //   {current_pose.pose.orientation.w,
-  //    current_pose.pose.orientation.x,
-  //    current_pose.pose.orientation.y,
-  //    current_pose.pose.orientation.z,
-  //    current_pose.pose.position.x,
-  //    current_pose.pose.position.y,
-  //    current_pose.pose.position.z},
-
-  //   {current_pose.pose.orientation.w,
-  //    current_pose.pose.orientation.x,
-  //    current_pose.pose.orientation.y,
-  //    current_pose.pose.orientation.z,
-  //    current_pose.pose.position.x + 0.3,
-  //    current_pose.pose.position.y + 0.3,
-  //    0.4},
-
-  //   {current_pose.pose.orientation.w,
-  //    current_pose.pose.orientation.x,
-  //    current_pose.pose.orientation.y,
-  //    current_pose.pose.orientation.z,
-  //    current_pose.pose.position.x + 0.3,
-  //    current_pose.pose.position.y + 0.1,
-  //    0.2},
-  // };
-
-  moveit_controller.setTrajectoryFromPoints(path);
-
-  // go from point to point
+  // Go from point to point
   // for (const auto& point : path)
   // {
   //   auto const target_pose = moveit_controller.createTargetPose(point.qw,
