@@ -7,9 +7,9 @@ from launch.substitutions import LaunchConfiguration
 def generate_launch_description():
     # Define the MoveGroupInterface name
     arg = DeclareLaunchArgument(
-        'move_group_interface_name',
-        default_value='arm',
-        description='The name of the MoveGroupInterface to be used'
+        "move_group_interface_name",
+        default_value="arm",
+        description="The name of the MoveGroupInterface to be used"
     )
 
     # Set MoveIt configuration
@@ -21,7 +21,7 @@ def generate_launch_description():
         executable="moveit_controller",
         output="screen",
         parameters=[
-            {'move_group_interface_name': LaunchConfiguration('move_group_interface_name')},
+            {"move_group_interface_name": LaunchConfiguration("move_group_interface_name")},
             moveit_config.robot_description, # Load URDF
             moveit_config.robot_description_semantic, # Load SRDF
             moveit_config.robot_description_kinematics, # Load kinematics.yaml

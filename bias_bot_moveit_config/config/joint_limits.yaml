@@ -8,12 +8,37 @@ default_acceleration_scaling_factor: 0.1
 # Specific joint properties can be changed with the keys [max_position, min_position, max_velocity, max_acceleration]
 # Joint limits can be turned off with [has_velocity_limits, has_acceleration_limits]
 joint_limits:
-  joint_Revolute-3:
+  ArmV3_arm_1_main_3_Revolute-16:
     has_velocity_limits: true
     max_velocity: 2.0
     has_acceleration_limits: true
     max_acceleration: 0.5
-  shoulder_Revolute-1:
+  ArmV3_arm_1_main_Revolute-10:
+    has_velocity_limits: true
+    max_velocity: 2.0
+    has_acceleration_limits: true
+    max_acceleration: 0.5
+  Joint1_Revolute-11:
+    has_velocity_limits: true
+    max_velocity: 2.0
+    has_acceleration_limits: true
+    max_acceleration: 0.5
+  Joint3_Revolute-17:
+    has_velocity_limits: true
+    max_velocity: 2.0
+    has_acceleration_limits: true
+    max_acceleration: 0.5
+  Joint_Revolute-2:
+    has_velocity_limits: true
+    max_velocity: 2.0
+    has_acceleration_limits: true
+    max_acceleration: 0.5
+  Servo_dummy4_Revolute-20:
+    has_velocity_limits: true
+    max_velocity: 2.0
+    has_acceleration_limits: true
+    max_acceleration: 0.5
+  Shoulder_Revolute-1:
     has_velocity_limits: true
     max_velocity: 2.0
     has_acceleration_limits: true

@@ -1,7 +1,7 @@
 #include <rclcpp/rclcpp.hpp>
 #include "moveit_controller/moveit_controller.hpp"
 
-#define PACKAGE_NAME       "moveit_controller"
+#define PACKAGE_NAME    "moveit_controller"
 
 
 /**

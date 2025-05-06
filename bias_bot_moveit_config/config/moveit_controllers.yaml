@@ -9,6 +9,9 @@ moveit_simple_controller_manager:
   arm_controller:
     type: FollowJointTrajectory
     joints:
-      - shoulder_Revolute-1
+      - Shoulder_Revolute-1
+      - ArmV3_arm_1_main_Revolute-10
+      - ArmV3_arm_1_main_3_Revolute-16
+      - Servo_dummy4_Revolute-20
     action_ns: follow_joint_trajectory
     default: true

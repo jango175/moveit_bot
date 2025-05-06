@@ -3,5 +3,5 @@ from moveit_configs_utils.launches import generate_moveit_rviz_launch
 
 
 def generate_launch_description():
-    moveit_config = MoveItConfigsBuilder("new_urdf_assembly", package_name="bias_bot_moveit_config").to_moveit_configs()
+    moveit_config = MoveItConfigsBuilder("BIAS_bot", package_name="bias_bot_moveit_config").to_moveit_configs()
     return generate_moveit_rviz_launch(moveit_config)

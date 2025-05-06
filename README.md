@@ -1,4 +1,4 @@
-# MoveIt2 simulation template
+# MoveIt2 simulation
 
 ## How 2 use?
 1. Install MoveIt2 packages:

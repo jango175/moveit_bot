@@ -1,73 +1,512 @@
 <?xml version='1.0' encoding='utf-8'?>
-<robot name="new_urdf_assembly">
-    <link name="shoulder">
-        <inertial>
-            <origin xyz="-7.853433140069155e-08 -0.10641379216315391 -0.0076335389692646465" rpy="0.0 0.0 0.0" />
-            <mass value="1.00209496973953" />
-            <inertia ixx="0.0008813765274265917" iyy="0.00041153382449582427" izz="0.0009583856240936404" ixy="2.9846514576729824e-09" iyz="-5.003593754259329e-05" ixz="1.0002397421138782e-09" />
-        </inertial>
-        <visual name="shoulder_visual">
+<robot name="BIAS_bot">
+    <link name="Shoulder">
+        <!-- <inertial>
+            <origin xyz="-8.125372723825897e-08 -0.10619002622450717 -0.007731488682286525" rpy="0.0 0.0 0.0" />
+            <mass value="0.9685569164755512" />
+            <inertia ixx="0.0008701681450311062" iyy="0.0003915350983889555" izz="0.000929220849254923" ixy="2.967041323599391e-09" iyz="-5.2651527362911174e-05" ixz="1.0079482644695153e-09" />
+        </inertial> -->
+        <visual name="Shoulder_visual">
             <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
             <geometry>
-                <mesh filename="package://moveit_bot_bias_bot_description/meshes/shoulder.stl" scale="0.001 0.001 0.001" />
+                <mesh filename="package://moveit_bot_bias_bot_description/meshes/Shoulder.stl" scale="0.001 0.001 0.001" />
             </geometry>
         </visual>
-        <collision name="shoulder_collision">
+        <collision name="Shoulder_collision">
             <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
             <geometry>
-                <mesh filename="package://moveit_bot_bias_bot_description/meshes/shoulder.stl" scale="0.001 0.001 0.001" />
+                <mesh filename="package://moveit_bot_bias_bot_description/meshes/Shoulder.stl" scale="0.001 0.001 0.001" />
             </geometry>
         </collision>
     </link>
-    <link name="joint">
+    <link name="Joint">
         <inertial>
-            <origin xyz="1.0118791249347226e-10 -0.008594906122159891 0.0024999999999999866" rpy="0.0 -0.0 0.0" />
-            <mass value="0.031171001796121915" />
-            <inertia ixx="4.146876112089327e-06" iyy="1.1273781104004941e-06" izz="5.1443750483393396e-06" ixy="9.373734156502972e-15" iyz="-1.0164395367051604e-19" ixz="1.0164395367051604e-20" />
+            <origin xyz="-0.00047215827543692135 -0.00874042451087254 0.002826945122766431" rpy="0.0 -0.0 0.0" />
+            <mass value="0.033587469088615846" />
+            <inertia ixx="4.3456672460951546e-06" iyy="1.2817957552321176e-06" izz="5.3984048810997755e-06" ixy="-6.898663935531594e-09" iyz="2.0444052686680264e-08" ixz="6.607644672139805e-08" />
         </inertial>
-        <visual name="joint_visual">
-            <origin xyz="0.005000000149011621 -0.06899999999999987 0.02899999999999994" rpy="3.141592653589793 1.5707963267948961 0" />
+        <visual name="Joint_visual">
+            <origin xyz="0.005000000149011608 -0.06899999999999999 -0.024" rpy="3.141592653589793 1.5707963267948966 0" />
             <geometry>
-                <mesh filename="package://moveit_bot_bias_bot_description/meshes/joint.stl" scale="0.001 0.001 0.001" />
+                <mesh filename="package://moveit_bot_bias_bot_description/meshes/Joint.stl" scale="0.001 0.001 0.001" />
             </geometry>
         </visual>
-        <collision name="joint_collision">
-            <origin xyz="0.005000000149011621 -0.06899999999999987 0.02899999999999994" rpy="3.141592653589793 1.5707963267948961 0" />
+        <collision name="Joint_collision">
+            <origin xyz="0.005000000149011608 -0.06899999999999999 -0.024" rpy="3.141592653589793 1.5707963267948966 0" />
             <geometry>
-                <mesh filename="package://moveit_bot_bias_bot_description/meshes/joint.stl" scale="0.001 0.001 0.001" />
+                <mesh filename="package://moveit_bot_bias_bot_description/meshes/Joint.stl" scale="0.001 0.001 0.001" />
             </geometry>
         </collision>
     </link>
-    <link name="arm">
+    <link name="Shoulder_joint">
         <inertial>
-            <origin xyz="0.0026585919301290997 -0.01918221579033086 -0.024000571816830726" rpy="0.0 -0.0 0.0" />
+            <origin xyz="0.0026585919301290962 -0.01918221579033093 -0.024000571816830744" rpy="0.0 -0.0 0.0" />
             <mass value="0.5711036137259029" />
-            <inertia ixx="0.00020878598785673046" iyy="0.00015346622537076968" izz="0.00023149872173090373" ixy="9.115549979373943e-06" iyz="-1.8928363147603315e-09" ixz="-5.6468142581902705e-09" />
+            <inertia ixx="0.00020878598785673068" iyy="0.00015346622537076968" izz="0.0002314987217309058" ixy="9.115549979373834e-06" iyz="-1.8928363147568996e-09" ixz="-5.64681425819051e-09" />
         </inertial>
-        <visual name="arm_visual">
-            <origin xyz="-0.0049999998509883525 -0.04499999999999992 -0.024000000000000066" rpy="-3.141592653589793 -1.5707963267948966 0" />
+        <visual name="Shoulder_joint_visual">
+            <origin xyz="-0.0049999998509883525 -0.04499999999999999 -0.024000000000000084" rpy="-3.141592653589793 -1.5707963267948966 0" />
             <geometry>
-                <mesh filename="package://moveit_bot_bias_bot_description/meshes/arm.stl" scale="0.001 0.001 0.001" />
+                <mesh filename="package://moveit_bot_bias_bot_description/meshes/Shoulder_joint.stl" scale="0.001 0.001 0.001" />
             </geometry>
         </visual>
-        <collision name="arm_collision">
-            <origin xyz="-0.0049999998509883525 -0.04499999999999992 -0.024000000000000066" rpy="-3.141592653589793 -1.5707963267948966 0" />
+        <collision name="Shoulder_joint_collision">
+            <origin xyz="-0.0049999998509883525 -0.04499999999999999 -0.024000000000000084" rpy="-3.141592653589793 -1.5707963267948966 0" />
             <geometry>
-                <mesh filename="package://moveit_bot_bias_bot_description/meshes/arm.stl" scale="0.001 0.001 0.001" />
+                <mesh filename="package://moveit_bot_bias_bot_description/meshes/Shoulder_joint.stl" scale="0.001 0.001 0.001" />
             </geometry>
         </collision>
     </link>
-    <joint name="shoulder_Revolute-1" type="continuous">
+    <link name="Servo_dummy">
+        <inertial>
+            <origin xyz="-0.005615869338442905 -0.007622827988601824 0.014250007079010625" rpy="0.0 -0.0 0.0" />
+            <mass value="0.35035104472812495" />
+            <inertia ixx="8.590085123253745e-05" iyy="5.78612520266928e-05" izz="9.857816382350792e-05" ixy="-1.225823010735601e-07" iyz="1.8398339600954328e-11" ixz="2.105156708032314e-11" />
+        </inertial>
+        <visual name="Servo_dummy_visual">
+            <origin xyz="-0.0059999999999999915 0.003999999999999968 0.01424999999999992" rpy="-0.0 1.5707963267948966 0" />
+            <geometry>
+                <mesh filename="package://moveit_bot_bias_bot_description/meshes/Servo_dummy.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </visual>
+        <collision name="Servo_dummy_collision">
+            <origin xyz="-0.0059999999999999915 0.003999999999999968 0.01424999999999992" rpy="-0.0 1.5707963267948966 0" />
+            <geometry>
+                <mesh filename="package://moveit_bot_bias_bot_description/meshes/Servo_dummy.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+    <link name="Pulley">
+        <inertial>
+            <origin xyz="0.011487652437383918 -0.008000000000144655 8.791258832019366e-12" rpy="0.0 -0.0 0.0" />
+            <mass value="0.08716626706769168" />
+            <inertia ixx="1.174819285675358e-05" iyy="8.309715951157346e-06" izz="8.397013174204397e-06" ixy="-8.53267109746092e-17" iyz="-6.13956585224229e-16" ixz="3.4372325949036386e-15" />
+        </inertial>
+        <visual name="Pulley_visual">
+            <origin xyz="-0.01899999999999997 -0.007999999999999972 -7.327471962526034e-17" rpy="-5.997176710996477e-17 -9.926167403289885e-24 -2.775557561562892e-17" />
+            <geometry>
+                <mesh filename="package://moveit_bot_bias_bot_description/meshes/Pulley.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </visual>
+        <collision name="Pulley_collision">
+            <origin xyz="-0.01899999999999997 -0.007999999999999972 -7.327471962526034e-17" rpy="-5.997176710996477e-17 -9.926167403289885e-24 -2.775557561562892e-17" />
+            <geometry>
+                <mesh filename="package://moveit_bot_bias_bot_description/meshes/Pulley.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+    <link name="Wire_support_R">
+        <inertial>
+            <origin xyz="0.016884812943953047 0.01727929633738459 -0.007339088954991312" rpy="0.0 -0.0 0.0" />
+            <mass value="0.11933054574035153" />
+            <inertia ixx="3.617956512807618e-05" iyy="2.373692165665459e-05" izz="3.641009497690781e-05" ixy="-1.4360290227914338e-05" iyz="6.855924953347992e-06" ixz="5.530065402579182e-06" />
+        </inertial>
+        <visual name="Wire_support_R_visual">
+            <origin xyz="-0.014500000216066984 0.004000000000000039 0.005999999999999982" rpy="3.137829312575778e-31 1.5707963267948966 0" />
+            <geometry>
+                <mesh filename="package://moveit_bot_bias_bot_description/meshes/Wire_support_R.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </visual>
+        <collision name="Wire_support_R_collision">
+            <origin xyz="-0.014500000216066984 0.004000000000000039 0.005999999999999982" rpy="3.137829312575778e-31 1.5707963267948966 0" />
+            <geometry>
+                <mesh filename="package://moveit_bot_bias_bot_description/meshes/Wire_support_R.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+    <link name="ArmV3_arm_1_main">
+        <inertial>
+            <origin xyz="-0.008600516919816349 0.001009411458789163 0.019514870930571308" rpy="0.0 -0.0 0.0" />
+            <mass value="0.8691619110350246" />
+            <inertia ixx="0.0001733318317095538" iyy="0.0015535221477517144" izz="0.0015262253824998959" ixy="-0.00013377952135791032" iyz="-4.4112408417502794e-07" ixz="1.5984017692693164e-07" />
+        </inertial>
+        <visual name="ArmV3_arm_1_main_visual">
+            <origin xyz="-0.007999997764825876 0.0049999999254941585 -8.881784197001253e-18" rpy="1.5707963267948977 -1.1102230246251568e-16 -8.320017359752859e-32" />
+            <geometry>
+                <mesh filename="package://moveit_bot_bias_bot_description/meshes/ArmV3_arm_1_main.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </visual>
+        <collision name="ArmV3_arm_1_main_collision">
+            <origin xyz="-0.007999997764825876 0.0049999999254941585 -8.881784197001253e-18" rpy="1.5707963267948977 -1.1102230246251568e-16 -8.320017359752859e-32" />
+            <geometry>
+                <mesh filename="package://moveit_bot_bias_bot_description/meshes/ArmV3_arm_1_main.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+    <link name="Servo_dummy3">
+        <inertial>
+            <origin xyz="0.00762282595896961 -0.005615871636687957 0.014250007153516504" rpy="0.0 -0.0 0.0" />
+            <mass value="0.35035104472812495" />
+            <inertia ixx="5.786125202669282e-05" iyy="8.590085123253788e-05" izz="9.857816382350792e-05" ixy="1.2258230107343136e-07" iyz="2.105156705152402e-11" ixz="-1.8398339655164436e-11" />
+        </inertial>
+        <visual name="Servo_dummy3_visual">
+            <origin xyz="-0.0040000020296321725 -0.006000002298245053 0.0142500000745058" rpy="-1.5707963267948966 1.5707963267948957 0" />
+            <geometry>
+                <mesh filename="package://moveit_bot_bias_bot_description/meshes/Servo_dummy3.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </visual>
+        <collision name="Servo_dummy3_collision">
+            <origin xyz="-0.0040000020296321725 -0.006000002298245053 0.0142500000745058" rpy="-1.5707963267948966 1.5707963267948957 0" />
+            <geometry>
+                <mesh filename="package://moveit_bot_bias_bot_description/meshes/Servo_dummy3.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+    <link name="Wire_support_R1">
+        <inertial>
+            <origin xyz="0.01688481301845896 0.007339086656746199 0.01727929836701682" rpy="0.0 -0.0 0.0" />
+            <mass value="0.11933054574035153" />
+            <inertia ixx="3.6179565128076395e-05" iyy="3.641009497690927e-05" izz="2.3736921656654863e-05" ixy="-5.53006540257925e-06" iyz="-6.855924953347992e-06" ixz="-1.4360290227914365e-05" />
+        </inertial>
+        <visual name="Wire_support_R1_visual">
+            <origin xyz="-0.014500000141561076 -0.006000002298245062 0.004000002029632235" rpy="1.5707963267948966 -1.437568743286591e-15 1.5707963267948957" />
+            <geometry>
+                <mesh filename="package://moveit_bot_bias_bot_description/meshes/Wire_support_R1.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </visual>
+        <collision name="Wire_support_R1_collision">
+            <origin xyz="-0.014500000141561076 -0.006000002298245062 0.004000002029632235" rpy="1.5707963267948966 -1.437568743286591e-15 1.5707963267948957" />
+            <geometry>
+                <mesh filename="package://moveit_bot_bias_bot_description/meshes/Wire_support_R1.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+    <link name="Pulley1">
+        <inertial>
+            <origin xyz="0.007999997970512452 0.0114876501391389 8.329716472132987e-11" rpy="0.0 -0.0 -4.327408640805797e-62" />
+            <mass value="0.08716626706769168" />
+            <inertia ixx="8.3097159511574e-06" iyy="1.1748192856753472e-05" izz="8.397013174204723e-06" ixy="8.524539581167279e-17" iyz="3.4372190423764826e-15" ixz="6.139836902785412e-16" />
+        </inertial>
+        <visual name="Pulley1_visual">
+            <origin xyz="0.007999997970367812 -0.01900000229824498 7.450580374879223e-11" rpy="-8.42578957736415e-17 -9.145327540810425e-16 1.5707963267948981" />
+            <geometry>
+                <mesh filename="package://moveit_bot_bias_bot_description/meshes/Pulley1.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </visual>
+        <collision name="Pulley1_collision">
+            <origin xyz="0.007999997970367812 -0.01900000229824498 7.450580374879223e-11" rpy="-8.42578957736415e-17 -9.145327540810425e-16 1.5707963267948981" />
+            <geometry>
+                <mesh filename="package://moveit_bot_bias_bot_description/meshes/Pulley1.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+    <link name="Joint1">
+        <inertial>
+            <origin xyz="-0.008740424086189523 0.0004721581636781391 0.0028269451227664" rpy="0.0 -0.0 0.0" />
+            <mass value="0.033587469088615846" />
+            <inertia ixx="1.281795755232165e-06" iyy="4.345667246095182e-06" izz="5.39840488109983e-06" ixy="6.898663935490937e-09" iyz="-6.607644672141753e-08" ixz="2.0444052686646383e-08" />
+        </inertial>
+        <visual name="Joint1_visual">
+            <origin xyz="-0.06899999957531698 -0.005000000260770374 -0.02400000000000002" rpy="-1.5707963267948966 1.570796326794896 0" />
+            <geometry>
+                <mesh filename="package://moveit_bot_bias_bot_description/meshes/Joint1.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </visual>
+        <collision name="Joint1_collision">
+            <origin xyz="-0.06899999957531698 -0.005000000260770374 -0.02400000000000002" rpy="-1.5707963267948966 1.570796326794896 0" />
+            <geometry>
+                <mesh filename="package://moveit_bot_bias_bot_description/meshes/Joint1.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+    <link name="ArmV3_arm_1_2">
+        <inertial>
+            <origin xyz="-0.0029649424410501048 0.024000007057710653 -0.027521194123580114" rpy="0.0 -0.0 0.0" />
+            <mass value="0.4561701564775116" />
+            <inertia ixx="0.000301026787061176" iyy="0.0002966830034528715" izz="8.97941722176242e-05" ixy="9.0279217749515e-12" iyz="-7.53498701150726e-11" ixz="-5.307936119938424e-05" />
+        </inertial>
+        <visual name="ArmV3_arm_1_2_visual">
+            <origin xyz="-0.0074999998509884145 0.04400000000000001 0.07650000156462186" rpy="-3.1415926535897927 -1.5707963267948961 0" />
+            <geometry>
+                <mesh filename="package://moveit_bot_bias_bot_description/meshes/ArmV3_arm_1_2.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </visual>
+        <collision name="ArmV3_arm_1_2_collision">
+            <origin xyz="-0.0074999998509884145 0.04400000000000001 0.07650000156462186" rpy="-3.1415926535897927 -1.5707963267948961 0" />
+            <geometry>
+                <mesh filename="package://moveit_bot_bias_bot_description/meshes/ArmV3_arm_1_2.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+    <link name="ArmV3_arm_1_main_3">
+        <inertial>
+            <origin xyz="-0.013490828914890276 0.0008619575325678053 0.03113663496669503" rpy="0.0 -0.0 0.0" />
+            <mass value="1.0536423016393843" />
+            <inertia ixx="0.0008687465263368867" iyy="0.0022834813404254382" izz="0.0017033773080618597" ixy="-9.802479873876691e-05" iyz="-6.035953746960556e-05" ixz="-0.0009303259681874582" />
+        </inertial>
+        <visual name="ArmV3_arm_1_main_3_visual">
+            <origin xyz="0.14000000156462186 -0.02000000000000002 0.0057999999299646" rpy="7.948367978426969e-16 -2.7755575615628894e-16 -1.97215226305253e-31" />
+            <geometry>
+                <mesh filename="package://moveit_bot_bias_bot_description/meshes/ArmV3_arm_1_main_3.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </visual>
+        <collision name="ArmV3_arm_1_main_3_collision">
+            <origin xyz="0.14000000156462186 -0.02000000000000002 0.0057999999299646" rpy="7.948367978426969e-16 -2.7755575615628894e-16 -1.97215226305253e-31" />
+            <geometry>
+                <mesh filename="package://moveit_bot_bias_bot_description/meshes/ArmV3_arm_1_main_3.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+    <link name="Servo_dummy2">
+        <inertial>
+            <origin xyz="-0.00762282975818958 0.005615870465418356 0.014250009201260223" rpy="0.0 -0.0 0.0" />
+            <mass value="0.35035104472812495" />
+            <inertia ixx="5.7861252026693074e-05" iyy="8.590085123253832e-05" izz="9.857816382350797e-05" ixy="1.2258230107345286e-07" iyz="-2.1051566979063e-11" ixz="1.8398339109675218e-11" />
+        </inertial>
+        <visual name="Servo_dummy2_visual">
+            <origin xyz="0.003999998230412212 0.006000001126975447 0.014250002122249512" rpy="1.570796326794897 1.570796326794896 0" />
+            <geometry>
+                <mesh filename="package://moveit_bot_bias_bot_description/meshes/Servo_dummy2.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </visual>
+        <collision name="Servo_dummy2_collision">
+            <origin xyz="0.003999998230412212 0.006000001126975447 0.014250002122249512" rpy="1.570796326794897 1.570796326794896 0" />
+            <geometry>
+                <mesh filename="package://moveit_bot_bias_bot_description/meshes/Servo_dummy2.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+    <link name="Wire_support_R2">
+        <inertial>
+            <origin xyz="-0.013599301068856668 0.007339087828015773 0.042475124377146775" rpy="0.0 -0.0 0.0" />
+            <mass value="0.11933054574035153" />
+            <inertia ixx="4.51806897264072e-05" iyy="3.641009497690889e-05" izz="1.4735797058324277e-05" ixy="1.7062774122246733e-07" iyz="-8.806600734486985e-06" ixz="3.6331676504658406e-06" />
+        </inertial>
+        <visual name="Wire_support_R2_visual">
+            <origin xyz="-0.02910569563739074 -0.0060000011269755425 0.012128824177775215" rpy="0.8726646259971667 -1.2576670329852738e-15 1.5707963267948977" />
+            <geometry>
+                <mesh filename="package://moveit_bot_bias_bot_description/meshes/Wire_support_R2.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </visual>
+        <collision name="Wire_support_R2_collision">
+            <origin xyz="-0.02910569563739074 -0.0060000011269755425 0.012128824177775215" rpy="0.8726646259971667 -1.2576670329852738e-15 1.5707963267948977" />
+            <geometry>
+                <mesh filename="package://moveit_bot_bias_bot_description/meshes/Wire_support_R2.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+    <link name="Pulley2">
+        <inertial>
+            <origin xyz="0.00612835877537794 0.011487651310408386 0.005142305645733423" rpy="0.0 -0.0 5.397605346934028e-79" />
+            <mass value="0.08716626706769168" />
+            <inertia ixx="8.345785060227644e-06" iyy="1.1748192856753364e-05" izz="8.360944065134452e-06" ixy="-2.144118405178907e-15" iyz="2.6877913933140157e-15" ixz="-4.298549092997435e-08" />
+        </inertial>
+        <visual name="Pulley2_visual">
+            <origin xyz="0.006128358780918113 -0.01900000112697549 0.005142305638905889" rpy="-0.6981317007977279 4.75053572784146e-16 1.5707963267948981" />
+            <geometry>
+                <mesh filename="package://moveit_bot_bias_bot_description/meshes/Pulley2.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </visual>
+        <collision name="Pulley2_collision">
+            <origin xyz="0.006128358780918113 -0.01900000112697549 0.005142305638905889" rpy="-0.6981317007977279 4.75053572784146e-16 1.5707963267948981" />
+            <geometry>
+                <mesh filename="package://moveit_bot_bias_bot_description/meshes/Pulley2.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+    <link name="Joint3">
+        <inertial>
+            <origin xyz="-0.00874042111526613 0.0004721595130801126 0.002826945122766409" rpy="0.0 -0.0 0.0" />
+            <mass value="0.033587469088615846" />
+            <inertia ixx="1.281795755232138e-06" iyy="4.345667246094748e-06" izz="5.3984048810997755e-06" ixy="6.898663935489243e-09" iyz="-6.607644672143108e-08" ixz="2.0444052686646383e-08" />
+        </inertial>
+        <visual name="Joint3_visual">
+            <origin xyz="-0.0689999966043936 -0.004999998911368374 -0.024000000000000014" rpy="-1.5707963267948963 1.570796326794896 0" />
+            <geometry>
+                <mesh filename="package://moveit_bot_bias_bot_description/meshes/Joint3.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </visual>
+        <collision name="Joint3_collision">
+            <origin xyz="-0.0689999966043936 -0.004999998911368374 -0.024000000000000014" rpy="-1.5707963267948963 1.570796326794896 0" />
+            <geometry>
+                <mesh filename="package://moveit_bot_bias_bot_description/meshes/Joint3.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+    <link name="ArmV3_arm_1_2_3">
+        <inertial>
+            <origin xyz="0.002749376828559934 0.02190935386168589 -0.026480104687279928" rpy="4.861730685829017e-63 -0.0 0.0" />
+            <mass value="0.5712342497066363" />
+            <inertia ixx="0.00034150855102304395" iyy="0.0003916402318892981" izz="0.00019731163908351629" ixy="3.344611189193227e-05" iyz="1.2550497913980073e-05" ixz="-7.364840062583367e-05" />
+        </inertial>
+        <visual name="ArmV3_arm_1_2_3_visual">
+            <origin xyz="0.008072710004470277 0.044000000000000074 0.2285745605364418" rpy="-3.1415926535897922 -1.5707963267948963 0" />
+            <geometry>
+                <mesh filename="package://moveit_bot_bias_bot_description/meshes/ArmV3_arm_1_2_3.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </visual>
+        <collision name="ArmV3_arm_1_2_3_collision">
+            <origin xyz="0.008072710004470277 0.044000000000000074 0.2285745605364418" rpy="-3.1415926535897922 -1.5707963267948963 0" />
+            <geometry>
+                <mesh filename="package://moveit_bot_bias_bot_description/meshes/ArmV3_arm_1_2_3.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+    <link name="wrist">
+        <inertial>
+            <origin xyz="-0.01870292246879 -0.0041153710547281565 0.008407027350565206" rpy="0.0 -0.0 -4.861730685829017e-63" />
+            <mass value="0.32553675299285556" />
+            <inertia ixx="6.554572128900335e-05" iyy="9.910642195256475e-05" izz="0.00012284643242315568" ixy="-1.9395574609227997e-05" iyz="-9.420843462952966e-06" ixz="-1.972279601408192e-05" />
+        </inertial>
+        <visual name="wrist_visual">
+            <origin xyz="0.29207456053644154 -0.02000164817002933 0.02149999822964024" rpy="7.917981645789851e-16 4.857225732735048e-17 1.2490009027033023e-16" />
+            <geometry>
+                <mesh filename="package://moveit_bot_bias_bot_description/meshes/wrist.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </visual>
+        <collision name="wrist_collision">
+            <origin xyz="0.29207456053644154 -0.02000164817002933 0.02149999822964024" rpy="7.917981645789851e-16 4.857225732735048e-17 1.2490009027033023e-16" />
+            <geometry>
+                <mesh filename="package://moveit_bot_bias_bot_description/meshes/wrist.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+    <link name="Servo_dummy4">
+        <inertial>
+            <origin xyz="0.00561586605351053 -0.007622823221370324 0.014249995071328585" rpy="0.0 -0.0 0.0" />
+            <mass value="0.35035104472812495" />
+            <inertia ixx="8.590085123253734e-05" iyy="5.786125202669745e-05" izz="9.85781638235192e-05" ixy="1.2258230107343136e-07" iyz="-1.839833961133048e-11" ixz="2.105156587245416e-11" />
+        </inertial>
+        <visual name="Servo_dummy4_visual">
+            <origin xyz="0.005999996715067582 0.00400000476723147 0.014250002150339296" rpy="-2.435410355595579e-18 -1.570796326794896 0" />
+            <geometry>
+                <mesh filename="package://moveit_bot_bias_bot_description/meshes/Servo_dummy4.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </visual>
+        <collision name="Servo_dummy4_collision">
+            <origin xyz="0.005999996715067582 0.00400000476723147 0.014250002150339296" rpy="-2.435410355595579e-18 -1.570796326794896 0" />
+            <geometry>
+                <mesh filename="package://moveit_bot_bias_bot_description/meshes/Servo_dummy4.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+    <link name="end">
+        <inertial>
+            <origin xyz="-0.004925303199440308 -4.767191539301052e-09 -0.014332902501419999" rpy="0.0 -0.0 0.0" />
+            <mass value="0.056453498805117096" />
+            <inertia ixx="9.571904961296567e-06" iyy="8.25809553968871e-06" izz="2.237202710981233e-06" ixy="-1.3552527156068805e-19" iyz="-3.1374100366299285e-17" ixz="-6.187930061971395e-08" />
+        </inertial>
+        <visual name="end_visual">
+            <origin xyz="0.3439999967150664 -0.020250004767232443 0.039999997849661566" rpy="9.386838484279546e-16 1.3186222077217654e-19 -1.2490009027033014e-16" />
+            <geometry>
+                <mesh filename="package://moveit_bot_bias_bot_description/meshes/end.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </visual>
+        <collision name="end_collision">
+            <origin xyz="0.3439999967150664 -0.020250004767232443 0.039999997849661566" rpy="9.386838484279546e-16 1.3186222077217654e-19 -1.2490009027033014e-16" />
+            <geometry>
+                <mesh filename="package://moveit_bot_bias_bot_description/meshes/end.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="Shoulder_Revolute-1" type="continuous">
         <origin xyz="0.024 -0.069 0.005" rpy="-3.141592653589793 -1.5707963267948966 0" />
-        <parent link="shoulder" />
-        <child link="joint" />
+        <parent link="Shoulder" />
+        <child link="Joint" />
         <axis xyz="0.0 0.0 1.0" />
     </joint>
-    <joint name="joint_Revolute-3" type="continuous">
+    <joint name="Joint_Revolute-2" type="continuous">
         <origin xyz="0.0 -0.024000000000000004 0.0" rpy="0.0 -0.0 0.0" />
-        <parent link="joint" />
-        <child link="arm" />
-        <axis xyz="-0.0 0.0 -1.0" />
-        <mimic joint="shoulder_Revolute-1" multiplier="-1.0" offset="0.0" />
+        <parent link="Joint" />
+        <child link="Shoulder_joint" />
+        <axis xyz="0.0 0.0 -1.0" />
+        <mimic joint="Shoulder_Revolute-1" multiplier="-1.0" offset="0.0" /> 
+    </joint>
+    <joint name="Shoulder_Rigid-3" type="fixed">
+        <origin xyz="0.006 -0.114 0.0" rpy="0.0 -0.0 0.0" />
+        <parent link="Shoulder" />
+        <child link="Servo_dummy" />
+    </joint>
+    <joint name="Servo_dummy_Rigid-4" type="fixed">
+        <origin xyz="0.012999999999999998 0.01200000000000001 0.01425" rpy="-1.9721522630525295e-31 -0.0 -2.088097429759528e-53" />
+        <parent link="Servo_dummy" />
+        <child link="Pulley" />
+    </joint>
+    <joint name="Servo_dummy_Rigid-5" type="fixed">
+        <origin xyz="0.0 0.0 0.0285" rpy="-2.088097429759528e-53 -1.5707963267948966 0" />
+        <parent link="Servo_dummy" />
+        <child link="Wire_support_R" />
+    </joint>
+    <joint name="Shoulder_joint_Rigid-6" type="fixed">
+        <origin xyz="0.0 -0.045 -0.016" rpy="1.5707963267948966 -1.5707963267948966 0" />
+        <parent link="Shoulder_joint" />
+        <child link="ArmV3_arm_1_main" />
+    </joint>
+    <joint name="ArmV3_arm_1_main_Rigid-7" type="fixed">
+        <origin xyz="0.046171090000000005 0.005 0.025763820000000003" rpy="1.5707963267948966 -7.87425696643208e-47 0.0" />
+        <parent link="ArmV3_arm_1_main" />
+        <child link="Servo_dummy3" />
+    </joint>
+    <joint name="Servo_dummy3_Rigid-8" type="fixed">
+        <origin xyz="0.0 0.0 0.0285" rpy="3.0814879110194994e-33 -1.5707963267948966 0" />
+        <parent link="Servo_dummy3" />
+        <child link="Wire_support_R1" />
+    </joint>
+    <joint name="Servo_dummy3_Rigid-9" type="fixed">
+        <origin xyz="-0.012000000000000002 0.012999999999999998 0.01425" rpy="8.602605125365621e-33 1.9721522630525295e-31 3.0814879110194994e-33" />
+        <parent link="Servo_dummy3" />
+        <child link="Pulley1" />
+    </joint>
+    <joint name="ArmV3_arm_1_main_Revolute-10" type="continuous">
+        <origin xyz="-0.0605 -0.0025 0.044000000000000004" rpy="0.0 -7.87425696643208e-47 0.0" />
+        <parent link="ArmV3_arm_1_main" />
+        <child link="Joint1" />
+        <axis xyz="7.810989099284927e-47 0.0 1.0" />
+    </joint>
+    <joint name="Joint1_Revolute-11" type="continuous">
+        <origin xyz="-0.024000000000000004 0.0 0.0" rpy="-1.5707963267948966 -0.0 -1.5707963267948966" />
+        <parent link="Joint1" />
+        <child link="ArmV3_arm_1_2" />
+        <axis xyz="0.0 1.0 0.0" />
+        <mimic joint="ArmV3_arm_1_main_Revolute-10" multiplier="-1.0" offset="0.0" /> 
+    </joint>
+    <joint name="ArmV3_arm_1_2_Rigid-12" type="fixed">
+        <origin xyz="-0.013500000000000002 0.024000000000000004 -0.0635" rpy="-3.141592653589793 -1.5707963267948966 0" />
+        <parent link="ArmV3_arm_1_2" />
+        <child link="ArmV3_arm_1_main_3" />
+    </joint>
+    <joint name="ArmV3_arm_1_main_3_Rigid-13" type="fixed">
+        <origin xyz="0.021967239999999996 0.00584257 0.06055392" rpy="0.0 0.6981317007977311 -3.141592653589793" />
+        <parent link="ArmV3_arm_1_main_3" />
+        <child link="Servo_dummy2" />
+    </joint>
+    <joint name="Servo_dummy2_Rigid-14" type="fixed">
+        <origin xyz="-0.024000000659561885 0.0 0.02850000041077772" rpy="-5.551115123125783e-17 -0.8726646259971654 3.141592653589793" />
+        <parent link="Servo_dummy2" />
+        <child link="Wire_support_R2" />
+    </joint>
+    <joint name="Servo_dummy2_Rigid-15" type="fixed">
+        <origin xyz="0.012000003769883812 -0.012999999999999998 0.014250000554834177" rpy="-4.6579386524374596e-17 0.6981317007977311 3.141592653589793" />
+        <parent link="Servo_dummy2" />
+        <child link="Pulley2" />
+    </joint>
+    <joint name="ArmV3_arm_1_main_3_Revolute-16" type="continuous">
+        <origin xyz="-0.06457456 0.024000000000000004 -0.0022727100000000003" rpy="-1.5707963267948966 -0.0 4.3790577010150533e-47" />
+        <parent link="ArmV3_arm_1_main_3" />
+        <child link="Joint3" />
+        <axis xyz="4.3790577010150533e-47 -9.860761315262648e-32 1.0" />
+    </joint>
+    <joint name="Joint3_Revolute-17" type="continuous">
+        <origin xyz="-0.023999999999999987 0.0 0.0" rpy="-1.5707963267948966 1.4791141972893971e-31 -1.5707963267948966" />
+        <parent link="Joint3" />
+        <child link="ArmV3_arm_1_2_3" />
+        <axis xyz="4.930380657631324e-32 1.0 0.0" />
+        <mimic joint="ArmV3_arm_1_main_3_Revolute-16" multiplier="-1.0" offset="0.0" /> 
+    </joint>
+    <joint name="ArmV3_arm_1_2_3_Rigid-18" type="fixed">
+        <origin xyz="-0.013500000000000002 0.024000000000000004 -0.06350000000000001" rpy="-3.141592653589793 -1.5707963267948966 0" />
+        <parent link="ArmV3_arm_1_2_3" />
+        <child link="wrist" />
+    </joint>
+    <joint name="wrist_Rigid-19" type="fixed">
+        <origin xyz="-0.038920109999999966 -0.02773716 -0.003999999999999999" rpy="-3.141592653589793 -4.930380657631324e-32 2.2625809587726806e-32" />
+        <parent link="wrist" />
+        <child link="Servo_dummy4" />
+    </joint>
+    <joint name="Servo_dummy4_Revolute-20" type="continuous">
+        <origin xyz="-0.013000000000000043 0.004 0.014250000000000002" rpy="3.141592653589793 -0.0 -8.776337004300883e-32" />
+        <parent link="Servo_dummy4" />
+        <child link="end" />
+        <axis xyz="-1.0 -0.0 0.0" />
     </joint>
 </robot>
