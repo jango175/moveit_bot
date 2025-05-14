@@ -25,15 +25,29 @@
     ros2 launch bias_bot_moveit_config demo.launch.py
     ```
 
-5. Launch the controller for the desired robot:
+5. Configure the simulation in RViz:
+    * in `MotionPlanning`
+        * in `Planned Path` untick the `Loop Animation` field
+        * in `Options`
+            * tick `Collision-aware IK` field
+            * tick `Approx IK Solutions` field
+    * add `Trajectory` pannel
+    * add `MarkerArray` pannel
+        * change `Topic` to `rviz_visual_tools`
+    * add new `RvizVisualToolsGui` panel
+    * save the changes with `Ctrl+s`
+
+    ![rviz](imgs/rviz.png)
+
+6. Launch the controller for the desired robot:
     * for tests use panda robot:
-    ```bash
-    source install/setup.bash
-    ros2 launch moveit_controller panda_moveit_controller.launch.py
-    ```
+        ```bash
+        source install/setup.bash
+        ros2 launch moveit_controller panda_moveit_controller.launch.py
+        ```
 
     * for final robot:
-    ```bash
-    source install/setup.bash
-    ros2 launch moveit_controller bias_bot_moveit_controller.launch.py
-    ```
+        ```bash
+        source install/setup.bash
+        ros2 launch moveit_controller bias_bot_moveit_controller.launch.py
+        ```

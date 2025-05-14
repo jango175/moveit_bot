@@ -238,12 +238,28 @@ public:
     {
       // Compute IK to get joint positions for this Cartesian pose
       bool found_ik = robot_state.setFromIK(this->joint_model_group_, waypoint);
-      
+
       if (!found_ik)
       {
-        RCLCPP_WARN(this->logger_, "IK solution not found for waypoint (%f, %f, %f)", 
-                    waypoint.position.x, waypoint.position.y, waypoint.position.z);
-        continue; // Skip this waypoint
+        // Try to use approximated IK
+        kinematics::KinematicsQueryOptions options;
+        options.return_approximate_solution = true; // Enable approximate IK solutions
+        moveit::core::GroupStateValidityCallbackFn callback_fn;
+
+        found_ik = robot_state.setFromIK(this->joint_model_group_, waypoint, 0.0, callback_fn, options);
+
+        // If still not found, try to approximate with a different timeout
+        if (!found_ik)
+        {
+          found_ik = robot_state.setFromIK(this->joint_model_group_, waypoint, 0.5, callback_fn, options);
+
+          if (!found_ik)
+          {
+            RCLCPP_WARN(this->logger_, "IK solution not found for waypoint (%f, %f, %f)", 
+                        waypoint.position.x, waypoint.position.y, waypoint.position.z);
+            continue; // Skip this waypoint
+          }
+        }
       }
 
       // Make sure the state is valid (within joint limits)
