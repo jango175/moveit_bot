@@ -61,7 +61,7 @@ int main(int argc, char* argv[])
     current_pose.pose.position.y,
     current_pose.pose.position.z
   );
-  std::vector<geometry_msgs::msg::Pose> path = moveit_controller.generateEightShapedPath(start_pose, 0.1, 20);
+  std::vector<geometry_msgs::msg::Pose> path = moveit_controller.generateEightShapedPath(start_pose, 0.2, 25);
 
   moveit_controller.setTrajectoryTarget(path);
 

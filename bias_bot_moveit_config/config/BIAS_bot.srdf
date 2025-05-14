@@ -18,7 +18,10 @@
         <joint name="ArmV3_arm_1_main_3_Revolute-16"/>
         <joint name="Joint3_Revolute-17"/>
         <joint name="Servo_dummy4_Revolute-20"/>
-        <chain base_link="Shoulder" tip_link="Crystal"/>
+    </group>
+    <group name="tool">
+        <link name="crystal_holder"/>
+        <link name="Crystal"/>
     </group>
     <!--GROUP STATES: Purpose: Define a named state for a particular group, in terms of joint values. This is useful to define states like 'folded arms'-->
     <group_state name="rest" group="arm">
@@ -28,7 +31,7 @@
         <joint name="Shoulder_Revolute-1" value="0"/>
     </group_state>
     <!--END EFFECTOR: Purpose: Represent information about an end effector.-->
-    <end_effector name="end" parent_link="Crystal" group="arm"/>
+    <end_effector name="end" parent_link="crystal_holder" group="tool"/>
     <!--VIRTUAL JOINT: Purpose: this element defines a virtual joint between a robot link and an external frame of reference (considered fixed with respect to the robot)-->
     <virtual_joint name="virtual_joint" type="fixed" parent_frame="world" child_link="Shoulder"/>
     <!--PASSIVE JOINT: Purpose: this element is used to mark joints that are not actuated-->
