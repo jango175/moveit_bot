@@ -27,7 +27,7 @@
         <joint name="Shoulder_Revolute-1" value="0"/>
     </group_state>
     <!--END EFFECTOR: Purpose: Represent information about an end effector.-->
-    <end_effector name="end" parent_link="end" group="arm"/>
+    <end_effector name="end" parent_link="Crystal" group="arm"/>
     <!--VIRTUAL JOINT: Purpose: this element defines a virtual joint between a robot link and an external frame of reference (considered fixed with respect to the robot)-->
     <virtual_joint name="virtual_joint" type="fixed" parent_frame="world" child_link="Shoulder"/>
     <!--PASSIVE JOINT: Purpose: this element is used to mark joints that are not actuated-->
@@ -46,13 +46,14 @@
     <disable_collisions link1="ArmV3_arm_1_2" link2="Servo_dummy3" reason="Never"/>
     <disable_collisions link1="ArmV3_arm_1_2" link2="Wire_support_R2" reason="Never"/>
     <disable_collisions link1="ArmV3_arm_1_2_3" link2="ArmV3_arm_1_main_3" reason="Default"/>
+    <disable_collisions link1="ArmV3_arm_1_2_3" link2="Crystal" reason="Never"/>
     <disable_collisions link1="ArmV3_arm_1_2_3" link2="Joint" reason="Never"/>
     <disable_collisions link1="ArmV3_arm_1_2_3" link2="Joint1" reason="Never"/>
     <disable_collisions link1="ArmV3_arm_1_2_3" link2="Joint3" reason="Adjacent"/>
     <disable_collisions link1="ArmV3_arm_1_2_3" link2="Pulley2" reason="Never"/>
     <disable_collisions link1="ArmV3_arm_1_2_3" link2="Servo_dummy2" reason="Never"/>
     <disable_collisions link1="ArmV3_arm_1_2_3" link2="Servo_dummy4" reason="Never"/>
-    <disable_collisions link1="ArmV3_arm_1_2_3" link2="end" reason="Never"/>
+    <disable_collisions link1="ArmV3_arm_1_2_3" link2="crystal_holder" reason="Never"/>
     <disable_collisions link1="ArmV3_arm_1_2_3" link2="wrist" reason="Adjacent"/>
     <disable_collisions link1="ArmV3_arm_1_main" link2="Joint" reason="Never"/>
     <disable_collisions link1="ArmV3_arm_1_main" link2="Joint1" reason="Adjacent"/>
@@ -68,6 +69,9 @@
     <disable_collisions link1="ArmV3_arm_1_main_3" link2="Pulley2" reason="Never"/>
     <disable_collisions link1="ArmV3_arm_1_main_3" link2="Servo_dummy2" reason="Adjacent"/>
     <disable_collisions link1="ArmV3_arm_1_main_3" link2="Wire_support_R2" reason="Never"/>
+    <disable_collisions link1="Crystal" link2="Joint3" reason="Never"/>
+    <disable_collisions link1="Crystal" link2="Servo_dummy4" reason="Never"/>
+    <disable_collisions link1="Crystal" link2="crystal_holder" reason="Adjacent"/>
     <disable_collisions link1="Joint" link2="Joint1" reason="Never"/>
     <disable_collisions link1="Joint" link2="Joint3" reason="Never"/>
     <disable_collisions link1="Joint" link2="Pulley1" reason="Never"/>
@@ -92,7 +96,7 @@
     <disable_collisions link1="Joint1" link2="Wire_support_R" reason="Never"/>
     <disable_collisions link1="Joint1" link2="Wire_support_R1" reason="Never"/>
     <disable_collisions link1="Joint1" link2="Wire_support_R2" reason="Never"/>
-    <disable_collisions link1="Joint1" link2="end" reason="Never"/>
+    <disable_collisions link1="Joint1" link2="crystal_holder" reason="Never"/>
     <disable_collisions link1="Joint1" link2="wrist" reason="Never"/>
     <disable_collisions link1="Joint3" link2="Pulley" reason="Never"/>
     <disable_collisions link1="Joint3" link2="Pulley2" reason="Never"/>
@@ -104,7 +108,7 @@
     <disable_collisions link1="Joint3" link2="Shoulder_joint" reason="Never"/>
     <disable_collisions link1="Joint3" link2="Wire_support_R" reason="Never"/>
     <disable_collisions link1="Joint3" link2="Wire_support_R2" reason="Never"/>
-    <disable_collisions link1="Joint3" link2="end" reason="Never"/>
+    <disable_collisions link1="Joint3" link2="crystal_holder" reason="Never"/>
     <disable_collisions link1="Joint3" link2="wrist" reason="Never"/>
     <disable_collisions link1="Pulley" link2="Pulley1" reason="Never"/>
     <disable_collisions link1="Pulley" link2="Pulley2" reason="Never"/>
@@ -120,7 +124,7 @@
     <disable_collisions link1="Pulley1" link2="Shoulder_joint" reason="Never"/>
     <disable_collisions link1="Pulley1" link2="Wire_support_R" reason="Never"/>
     <disable_collisions link1="Pulley1" link2="Wire_support_R1" reason="Never"/>
-    <disable_collisions link1="Pulley1" link2="end" reason="Never"/>
+    <disable_collisions link1="Pulley1" link2="crystal_holder" reason="Never"/>
     <disable_collisions link1="Pulley1" link2="wrist" reason="Never"/>
     <disable_collisions link1="Pulley2" link2="Servo_dummy" reason="Never"/>
     <disable_collisions link1="Pulley2" link2="Servo_dummy2" reason="Adjacent"/>
@@ -129,7 +133,7 @@
     <disable_collisions link1="Pulley2" link2="Shoulder_joint" reason="Never"/>
     <disable_collisions link1="Pulley2" link2="Wire_support_R" reason="Never"/>
     <disable_collisions link1="Pulley2" link2="Wire_support_R2" reason="Never"/>
-    <disable_collisions link1="Pulley2" link2="end" reason="Never"/>
+    <disable_collisions link1="Pulley2" link2="crystal_holder" reason="Never"/>
     <disable_collisions link1="Pulley2" link2="wrist" reason="Never"/>
     <disable_collisions link1="Servo_dummy" link2="Servo_dummy3" reason="Never"/>
     <disable_collisions link1="Servo_dummy" link2="Shoulder" reason="Adjacent"/>
@@ -139,11 +143,10 @@
     <disable_collisions link1="Servo_dummy3" link2="Shoulder" reason="Never"/>
     <disable_collisions link1="Servo_dummy3" link2="Shoulder_joint" reason="Never"/>
     <disable_collisions link1="Servo_dummy3" link2="Wire_support_R1" reason="Adjacent"/>
-    <disable_collisions link1="Servo_dummy4" link2="end" reason="Adjacent"/>
+    <disable_collisions link1="Servo_dummy4" link2="crystal_holder" reason="Adjacent"/>
     <disable_collisions link1="Servo_dummy4" link2="wrist" reason="Adjacent"/>
     <disable_collisions link1="Shoulder" link2="Shoulder_joint" reason="Default"/>
     <disable_collisions link1="Shoulder" link2="Wire_support_R" reason="Never"/>
     <disable_collisions link1="Shoulder_joint" link2="Wire_support_R1" reason="Never"/>
     <disable_collisions link1="Shoulder_joint" link2="Wire_support_R2" reason="Never"/>
-    <disable_collisions link1="end" link2="wrist" reason="Never"/>
 </robot>

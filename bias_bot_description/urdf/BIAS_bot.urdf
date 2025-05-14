@@ -380,22 +380,41 @@
             </geometry>
         </collision>
     </link>
-    <link name="end">
+    <link name="crystal_holder">
         <inertial>
-            <origin xyz="-0.004925303199440308 -4.767191539301052e-09 -0.014332902501419999" rpy="0.0 -0.0 0.0" />
-            <mass value="0.056453498805117096" />
-            <inertia ixx="9.571904961296567e-06" iyy="8.25809553968871e-06" izz="2.237202710981233e-06" ixy="-1.3552527156068805e-19" iyz="-3.1374100366299285e-17" ixz="-6.187930061971395e-08" />
+            <origin xyz="-0.0053478617804589845 -9.703120573987034e-05 -0.02582195859175921" rpy="0.0 -0.0 0.0" />
+            <mass value="0.1047728661895372" />
+            <inertia ixx="3.195146718215256e-05" iyy="3.0262705435773682e-05" izz="1.2717055481824627e-05" ixy="-6.629552724444956e-09" iyz="-1.4795755639261405e-07" ixz="-7.021636004127252e-07" />
         </inertial>
-        <visual name="end_visual">
-            <origin xyz="0.3439999967150664 -0.020250004767232443 0.039999997849661566" rpy="9.386838484279546e-16 1.3186222077217654e-19 -1.2490009027033014e-16" />
+        <visual name="crystal_holder_visual">
+            <origin xyz="0.34399999671506865 -0.02025000476723242 0.03999999784966171" rpy="9.24806331784343e-16 1.3186222077225502e-19 1.942890293094024e-16" />
             <geometry>
-                <mesh filename="package://moveit_bot_bias_bot_description/meshes/end.stl" scale="0.001 0.001 0.001" />
+                <mesh filename="package://moveit_bot_bias_bot_description/meshes/crystal_holder.stl" scale="0.001 0.001 0.001" />
             </geometry>
         </visual>
-        <collision name="end_collision">
-            <origin xyz="0.3439999967150664 -0.020250004767232443 0.039999997849661566" rpy="9.386838484279546e-16 1.3186222077217654e-19 -1.2490009027033014e-16" />
+        <collision name="crystal_holder_collision">
+            <origin xyz="0.34399999671506865 -0.02025000476723242 0.03999999784966171" rpy="9.24806331784343e-16 1.3186222077225502e-19 1.942890293094024e-16" />
             <geometry>
-                <mesh filename="package://moveit_bot_bias_bot_description/meshes/end.stl" scale="0.001 0.001 0.001" />
+                <mesh filename="package://moveit_bot_bias_bot_description/meshes/crystal_holder.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+    <link name="Crystal">
+        <inertial>
+            <origin xyz="1.4996610531170518e-09 4.469209069490887e-09 0.00964999762872222" rpy="0.0 -0.0 0.0" />
+            <mass value="0.08850536048231127" />
+            <inertia ixx="7.03014554139078e-06" iyy="7.0301455744811725e-06" izz="8.56573082819341e-06" ixy="7.100585310698682e-13" iyz="1.3552527156068805e-20" ixz="4.336808689942018e-19" />
+        </inertial>
+        <visual name="Crystal_visual">
+            <origin xyz="1.4996610531170518e-09 4.469209067270441e-09 0.01929999762872222" rpy="-3.1415926535897922 -1.4432899320127015e-15 -1.942890293094039e-16" />
+            <geometry>
+                <mesh filename="package://moveit_bot_bias_bot_description/meshes/Crystal.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </visual>
+        <collision name="Crystal_collision">
+            <origin xyz="1.4996610531170518e-09 4.469209067270441e-09 0.01929999762872222" rpy="-3.1415926535897922 -1.4432899320127015e-15 -1.942890293094039e-16" />
+            <geometry>
+                <mesh filename="package://moveit_bot_bias_bot_description/meshes/Crystal.stl" scale="0.001 0.001 0.001" />
             </geometry>
         </collision>
     </link>
@@ -506,7 +525,12 @@
     <joint name="Servo_dummy4_Revolute-20" type="continuous">
         <origin xyz="-0.013000000000000043 0.004 0.014250000000000002" rpy="3.141592653589793 -0.0 -8.776337004300883e-32" />
         <parent link="Servo_dummy4" />
-        <child link="end" />
+        <child link="crystal_holder" />
         <axis xyz="-1.0 -0.0 0.0" />
+    </joint>
+    <joint name="crystal_holder_Rigid-21" type="fixed">
+        <origin xyz="-0.006000009999999989 -0.00024999999999999914 -0.038051009999999996" rpy="-3.141592653589793 4.867941253436161e-62 -1.2338329337763984e-31" />
+        <parent link="crystal_holder" />
+        <child link="Crystal" />
     </joint>
 </robot>
