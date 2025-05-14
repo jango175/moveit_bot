@@ -41,6 +41,28 @@ public:
                          rviz_visual_tools::RVIZ_MARKER_TOPIC, this->robot_model_)
   {
     this->clearMarkers();
+
+    // Check available groups
+    RCLCPP_INFO(this->logger_, "Available group names:");
+    for (const std::string& group_name : this->robot_model_->getJointModelGroupNames())
+    {
+      RCLCPP_INFO(this->logger_, "- %s", group_name.c_str());
+    }
+
+    // Check end effectors
+    const std::vector<const moveit::core::JointModelGroup*>& eef_groups = this->robot_model_->getEndEffectors();
+    RCLCPP_INFO(this->logger_, "Found %zu end effectors", eef_groups.size());
+    for (const auto& eef : eef_groups)
+    {
+      RCLCPP_INFO(this->logger_, "EEF: %s", eef->getName().c_str());
+      std::vector<std::string> tips;
+      eef->getEndEffectorTips(tips);
+      RCLCPP_INFO(this->logger_, "  Tips: %zu", tips.size());
+      for (const auto& tip : tips)
+      {
+        RCLCPP_INFO(this->logger_, "  - %s", tip.c_str());
+      }
+    }
   }
 
 
