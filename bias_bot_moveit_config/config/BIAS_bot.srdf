@@ -30,6 +30,12 @@
         <joint name="Servo_dummy4_Revolute-20" value="0"/>
         <joint name="Shoulder_Revolute-1" value="0"/>
     </group_state>
+    <group_state name="start" group="arm">
+        <joint name="ArmV3_arm_1_main_3_Revolute-16" value="-0.6"/>
+        <joint name="ArmV3_arm_1_main_Revolute-10" value="-0.5"/>
+        <joint name="Servo_dummy4_Revolute-20" value="1.5707"/>
+        <joint name="Shoulder_Revolute-1" value="0"/>
+    </group_state>
     <!--END EFFECTOR: Purpose: Represent information about an end effector.-->
     <end_effector name="end" parent_link="crystal_holder" group="tool"/>
     <!--VIRTUAL JOINT: Purpose: this element defines a virtual joint between a robot link and an external frame of reference (considered fixed with respect to the robot)-->
